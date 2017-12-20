@@ -12,8 +12,9 @@ class AddList extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    const id = Date.now() * Math.random();
     const title = this.state.title;
-    this.props.addList(title);
+    this.props.addList(title, id);
     this.setState({
       title: ""
     });
@@ -32,10 +33,11 @@ class AddList extends React.Component {
       <form onSubmit={this.handleSubmit}>
         <input
           type="text"
+          placeholder="Add a new task"
           onChange={this.handleChange}
           value={this.state.title}
         />
-        <input type="submit" value="Button" />
+        <input type="submit" value="Add" />
       </form>
     );
   }

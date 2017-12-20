@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Lists from "./components/Lists";
+import TodoList from "./components/TodoList";
 import AddList from "./components/AddList";
 
 import "./App.css";
@@ -8,17 +8,27 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      lists: ["First List", "Second List", "One more List"],
+      lists: [
+        { title: "First List", id: Date.now() * Math.random() },
+        { title: "Second List", id: Date.now() * Math.random() },
+        { title: "One more List", id: Date.now() * Math.random() }
+      ],
       todos: []
     };
     this.addList = this.addList.bind(this);
+    this.addNewTask = this.addNewTask.bind(this);
   }
 
-  addList(title) {
-    const lists = this.state.lists.concat(title);
+  addList(title, id) {
+    const lists = this.state.lists.concat({ title, id });
     this.setState({
       lists: lists
     });
+  }
+
+  addNewTask(listId, text) {
+    const todos = this.state.todos.concat(text);
+    this.setState(todos);
   }
 
   render() {
@@ -27,7 +37,7 @@ class App extends Component {
         <h2>Welcome to Trello Board</h2>
         <AddList addList={this.addList} />
         {this.state.lists.map((list, i) => {
-          return <Lists title={list} key={i} />;
+          return <TodoList title={list.title} key={i} />;
         })}
       </div>
     );

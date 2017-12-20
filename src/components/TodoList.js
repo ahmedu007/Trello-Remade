@@ -1,6 +1,6 @@
 import React from "react";
 
-class Lists extends React.Component {
+class TodoList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -14,4 +14,4 @@ class Lists extends React.Component {
   }
 }
 
-export default Lists;
+export default TodoList;
