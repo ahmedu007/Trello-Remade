@@ -27,17 +27,27 @@ class App extends Component {
   }
 
   addNewTask(listId, text) {
-    const todos = this.state.todos.concat(text);
-    this.setState(todos);
+    const todos = this.state.todos.concat({ listId, text });
+    this.setState({ todos });
   }
 
   render() {
     return (
       <div>
-        <h2>Welcome to Trello Board</h2>
+        <h2>Welcome to Custom Trello Board</h2>
         <AddList addList={this.addList} />
         {this.state.lists.map((list, i) => {
-          return <TodoList title={list.title} key={i} />;
+          return (
+            <TodoList
+              key={i}
+              addNewTask={this.addNewTask}
+              id={list.id}
+              title={list.title}
+              todos={this.state.todos.filter(
+                ({ listId }) => listId === list.id
+              )}
+            />
+          );
         })}
       </div>
     );
