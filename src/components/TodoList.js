@@ -30,7 +30,7 @@ class TodoList extends React.Component {
   render() {
     const { todos, title } = this.props;
     return (
-      <div>
+      <div className="column">
         <h3>{title}</h3>
         <form onSubmit={this.handleSubmit}>
           <input
@@ -41,11 +41,11 @@ class TodoList extends React.Component {
           />
           <input type="submit" value="Add task" />
         </form>
-        <div>
+        <ul>
           {todos.map((tasks, i) => {
             return <TaskCard task={tasks.text} />;
           })}
-        </div>
+        </ul>
       </div>
     );
   }
