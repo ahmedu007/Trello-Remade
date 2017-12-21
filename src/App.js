@@ -49,8 +49,10 @@ class App extends Component {
   }
 
   addNewTask(listId, text) {
-    const todos = this.state.todos.concat({ listId, text });
-    this.setState({ todos });
+    if (text.length > 0) {
+      const todos = this.state.todos.concat({ listId, text });
+      this.setState({ todos });
+    }
   }
 
   render() {
