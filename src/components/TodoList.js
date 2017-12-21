@@ -30,6 +30,8 @@ class TodoList extends React.Component {
     });
   }
 
+  deleteTodo() {}
+
   dragulaDecorator = componentBackingInstance => {
     if (componentBackingInstance) {
       let options = {};
@@ -45,7 +47,14 @@ class TodoList extends React.Component {
         <div className="content">
           <ul ref={this.dragulaDecorator}>
             {todos.map((tasks, i) => {
-              return <TaskCard key={i} task={tasks.text} />;
+              return (
+                <TaskCard
+                  key={i}
+                  task={tasks.text}
+                  task_id={tasks.task_id}
+                  removeTask={this.props.removeTask}
+                />
+              );
             })}
           </ul>
         </div>

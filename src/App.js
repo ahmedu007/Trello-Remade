@@ -21,24 +21,29 @@ class App extends Component {
       todos: [
         {
           listId: 1036028926122.7329,
-          text: "Fist item"
+          text: "Fist item",
+          task_id: 106056736787116130
         },
         {
           listId: 1036028926122.7329,
-          text: "Another item"
+          text: "Another item",
+          task_id: 10567367623116130
         },
         {
           listId: 1162410477426.691,
-          text: "Oh look Another item"
+          text: "Oh look Another item",
+          task_id: 117276831315291730
         },
         {
           listId: 1162410477426.691,
-          text: "Another item on another list"
+          text: "Another item on another list",
+          task_id: 83465640794226190
         }
       ]
     };
     this.addList = this.addList.bind(this);
     this.addNewTask = this.addNewTask.bind(this);
+    this.removeTask = this.removeTask.bind(this);
   }
 
   addList(title, id) {
@@ -49,10 +54,18 @@ class App extends Component {
   }
 
   addNewTask(listId, text) {
+    const task_id = Math.floor(Math.random() * 100000 * Date.now());
     if (text.length > 0) {
-      const todos = this.state.todos.concat({ listId, text });
+      const todos = this.state.todos.concat({ listId, text, task_id });
       this.setState({ todos });
     }
+  }
+
+  removeTask(id) {
+    const todos = this.state.todos.filter(({ task_id }) => task_id !== id);
+    this.setState({
+      todos
+    });
   }
 
   render() {
@@ -65,6 +78,7 @@ class App extends Component {
               <TodoList
                 key={i}
                 addNewTask={this.addNewTask}
+                removeTask={this.removeTask}
                 id={list.id}
                 title={list.title}
                 todos={this.state.todos.filter(
