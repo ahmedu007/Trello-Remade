@@ -1,5 +1,5 @@
 import React from "react";
-import shorid from "shortid";
+import shortid from "shortid";
 
 class AddList extends React.Component {
   constructor(props) {
