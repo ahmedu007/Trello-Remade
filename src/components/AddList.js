@@ -30,7 +30,7 @@ class AddList extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} className="column">
         <input
           type="text"
           placeholder="Add a new task"
