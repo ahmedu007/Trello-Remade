@@ -1,4 +1,5 @@
 import React from "react";
+import shorid from "shortid";
 
 class AddList extends React.Component {
   constructor(props) {
@@ -12,7 +13,7 @@ class AddList extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const id = Date.now() * Math.random();
+    const id = shortid.generate();
     const title = this.state.title;
     this.props.addList(title, id);
     this.setState({

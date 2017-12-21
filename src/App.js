@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import shortid from "shortid";
+
 import TodoList from "./components/TodoList";
 import AddList from "./components/AddList";
 
@@ -54,7 +56,7 @@ class App extends Component {
   }
 
   addNewTask(listId, text) {
-    const task_id = Math.floor(Math.random() * 100000 * Date.now());
+    const task_id = shortid.generate();
     if (text.length > 0) {
       const todos = this.state.todos.concat({ listId, text, task_id });
       this.setState({ todos });
@@ -66,6 +68,11 @@ class App extends Component {
     this.setState({
       todos
     });
+  }
+
+  removeList(id) {
+    const lists = this.state.lists.filter(({ id }) => id !== id);
+    this.setState({});
   }
 
   render() {
