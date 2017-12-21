@@ -2,6 +2,8 @@ import React from "react";
 import TaskCard from "./TaskCard";
 import Dragula from "react-dragula";
 
+import "./TodoList.css";
+
 class TodoList extends React.Component {
   constructor(props) {
     super(props);
@@ -47,14 +49,18 @@ class TodoList extends React.Component {
             })}
           </ul>
         </div>
-        <form onSubmit={this.handleSubmit}>
+        <form className="container-2" onSubmit={this.handleSubmit}>
+          <span className="icon">
+            <i className="fa fa-plus fa-2x" />
+          </span>
           <input
             type="text"
-            placeholder="Add an item"
+            id="search"
+            placeholder="Add a task"
             value={this.state.text}
             onChange={this.handleChange}
           />
-          <input type="submit" value="Add task" />
+          {/* <input type="submit" value="Add task" /> */}
         </form>
       </div>
     );
