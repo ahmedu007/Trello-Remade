@@ -8,8 +8,34 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      lists: [],
-      todos: []
+      lists: [
+        {
+          id: 1036028926122.7329,
+          title: "List # 1"
+        },
+        {
+          id: 1162410477426.691,
+          title: "List # 2"
+        }
+      ],
+      todos: [
+        {
+          listId: 1036028926122.7329,
+          text: "Fist item"
+        },
+        {
+          listId: 1036028926122.7329,
+          text: "Another item"
+        },
+        {
+          listId: 1162410477426.691,
+          text: "Oh look Another item"
+        },
+        {
+          listId: 1162410477426.691,
+          text: "Another item on another list"
+        }
+      ]
     };
     this.addList = this.addList.bind(this);
     this.addNewTask = this.addNewTask.bind(this);

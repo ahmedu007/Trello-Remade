@@ -31,12 +31,17 @@ class AddList extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit} className="column">
-        <input
-          type="text"
-          placeholder="Add a new task"
-          onChange={this.handleChange}
-          value={this.state.title}
-        />
+        <div className="group">
+          <input
+            type="text"
+            required
+            onChange={this.handleChange}
+            value={this.state.title}
+          />
+          <span className="highlight" />
+          <span className="bar" />
+          <label>Add a List</label>
+        </div>
         <input type="submit" value="Add" />
       </form>
     );

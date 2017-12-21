@@ -1,5 +1,6 @@
 import React from "react";
 import TaskCard from "./TaskCard";
+import Dragula from "react-dragula";
 
 class TodoList extends React.Component {
   constructor(props) {
@@ -27,11 +28,25 @@ class TodoList extends React.Component {
     });
   }
 
+  dragulaDecorator = componentBackingInstance => {
+    if (componentBackingInstance) {
+      let options = {};
+      Dragula([componentBackingInstance], options);
+    }
+  };
+
   render() {
     const { todos, title } = this.props;
     return (
       <div className="column">
         <h3>{title}</h3>
+        <div className="content">
+          <ul ref={this.dragulaDecorator}>
+            {todos.map((tasks, i) => {
+              return <TaskCard key={i} task={tasks.text} />;
+            })}
+          </ul>
+        </div>
         <form onSubmit={this.handleSubmit}>
           <input
             type="text"
@@ -41,11 +56,6 @@ class TodoList extends React.Component {
           />
           <input type="submit" value="Add task" />
         </form>
-        <ul>
-          {todos.map((tasks, i) => {
-            return <TaskCard task={tasks.text} />;
-          })}
-        </ul>
       </div>
     );
   }
