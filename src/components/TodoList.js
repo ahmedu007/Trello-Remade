@@ -57,7 +57,11 @@ class TodoList extends React.Component {
 
   handleTitleSubmit(event) {
     event.preventDefault();
-    this.props.editTitle(this.props.title, this.state.title);
+    this.props.editTitle(this.props.index, this.props.title, this.state.title);
+    this.setState({
+      isEditing: !this.state.isEditing,
+      title: ""
+    });
   }
 
   render() {

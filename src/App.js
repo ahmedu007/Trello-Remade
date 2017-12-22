@@ -81,10 +81,12 @@ class App extends Component {
     });
   }
 
-  editTitle(oldTitle, newTitle) {
-    const title = this.state.lists.filter(({ title }) => title === oldTitle);
-    console.log(title);
-    this.setState({});
+  editTitle(i, oldTitle, newTitle) {
+    const lists = this.state.lists.slice();
+    lists[i].title = newTitle;
+    this.setState({
+      lists
+    });
   }
 
   render() {
@@ -96,6 +98,7 @@ class App extends Component {
             return (
               <TodoList
                 key={i}
+                index={i}
                 addNewTask={this.addNewTask}
                 removeTask={this.removeTask}
                 removeList={() => {
