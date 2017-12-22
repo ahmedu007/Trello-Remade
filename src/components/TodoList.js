@@ -1,6 +1,7 @@
 import React from "react";
 import TaskCard from "./TaskCard";
 import Dragula from "react-dragula";
+import enhanceWithClickOutside from "react-click-outside";
 
 import "./TodoList.css";
 
@@ -17,6 +18,12 @@ class TodoList extends React.Component {
     this.editListTitle = this.editListTitle.bind(this);
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.handleTitleSubmit = this.handleTitleSubmit.bind(this);
+  }
+
+  handleClickOutside() {
+    this.setState({
+      isEditing: false
+    });
   }
 
   handleChange(event) {
@@ -119,4 +126,4 @@ class TodoList extends React.Component {
   }
 }
 
-export default TodoList;
+export default enhanceWithClickOutside(TodoList);

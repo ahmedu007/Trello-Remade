@@ -5,6 +5,7 @@
   "dependencies": {
     "bulma": "^0.6.1",
     "react": "^16.2.0",
+    "react-click-outside": "^3.0.0",
     "react-dom": "^16.2.0",
     "react-dragula": "^1.1.17",
     "react-scripts": "1.0.17",
