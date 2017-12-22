@@ -8,10 +8,16 @@ class TodoList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      title: "",
+      isEditing: false,
       text: ""
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.editListTitle = this.editListTitle.bind(this);
+    this.handleListRemove = this.handleListRemove.bind(this);
+    this.handleTitleChange = this.handleTitleChange.bind(this);
+    this.handleTitleSubmit = this.handleTitleSubmit.bind(this);
   }
 
   handleChange(event) {
@@ -30,8 +36,6 @@ class TodoList extends React.Component {
     });
   }
 
-  deleteTodo() {}
-
   dragulaDecorator = componentBackingInstance => {
     if (componentBackingInstance) {
       let options = {};
@@ -39,11 +43,52 @@ class TodoList extends React.Component {
     }
   };
 
+  editListTitle() {
+    this.setState({
+      isEditing: !this.state.isEditing
+    });
+  }
+
+  handleTitleChange(event) {
+    event.preventDefault();
+    this.setState({
+      title: event.target.value
+    });
+  }
+
+  handleTitleSubmit(event) {
+    event.preventDefault();
+    this.props.editTitle(this.props.title, this.state.title);
+  }
+
+  handleListRemove(event) {
+    event.preventDefault();
+    this.props.removeList(this.props.id);
+  }
+
   render() {
     const { todos, title } = this.props;
     return (
       <div className="column">
-        <h3>{title}</h3>
+        {this.state.isEditing ? (
+          <form onSubmit={this.handleTitleSubmit}>
+            <input
+              type="text"
+              value={this.state.title}
+              onChange={this.handleTitleChange}
+              placeholder={this.props.title}
+            />
+          </form>
+        ) : (
+          <span>
+            <span className="title is-5">{title}</span>
+            <a style={{ color: "black" }} onClick={this.editListTitle}>
+              <i className="fa fa-pencil" />
+            </a>
+            <button className="delete" onClick={this.props.removeList} />
+          </span>
+        )}
+
         <div className="content">
           <ul ref={this.dragulaDecorator}>
             {todos.map((tasks, i) => {

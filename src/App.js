@@ -46,6 +46,8 @@ class App extends Component {
     this.addList = this.addList.bind(this);
     this.addNewTask = this.addNewTask.bind(this);
     this.removeTask = this.removeTask.bind(this);
+    this.removeList = this.removeList.bind(this);
+    this.editTitle = this.editTitle.bind(this);
   }
 
   addList(title, id) {
@@ -70,8 +72,18 @@ class App extends Component {
     });
   }
 
-  removeList(id) {
-    const lists = this.state.lists.filter(({ id }) => id !== id);
+  removeList(i) {
+    const prevLists = this.state.lists.slice();
+    const firstHalf = prevLists.slice(0, i);
+    const secHalf = prevLists.slice(i + 1);
+    this.setState({
+      lists: firstHalf.concat(secHalf)
+    });
+  }
+
+  editTitle(oldTitle, newTitle) {
+    const title = this.state.lists.filter(({ title }) => title === oldTitle);
+    console.log(title);
     this.setState({});
   }
 
@@ -86,6 +98,10 @@ class App extends Component {
                 key={i}
                 addNewTask={this.addNewTask}
                 removeTask={this.removeTask}
+                removeList={() => {
+                  this.removeList(i);
+                }}
+                editTitle={this.editTitle}
                 id={list.id}
                 title={list.title}
                 todos={this.state.todos.filter(
