@@ -15,7 +15,6 @@ class TodoList extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.editListTitle = this.editListTitle.bind(this);
-    this.handleListRemove = this.handleListRemove.bind(this);
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.handleTitleSubmit = this.handleTitleSubmit.bind(this);
   }
@@ -59,11 +58,6 @@ class TodoList extends React.Component {
   handleTitleSubmit(event) {
     event.preventDefault();
     this.props.editTitle(this.props.title, this.state.title);
-  }
-
-  handleListRemove(event) {
-    event.preventDefault();
-    this.props.removeList(this.props.id);
   }
 
   render() {
