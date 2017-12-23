@@ -94,29 +94,30 @@ class App extends Component {
     return (
       <div>
         <ButtonAppBar />
-        <br />
-        <br />
-        <div className="columns">
-          {this.state.lists.map((list, i) => {
-            return (
-              <TodoList
-                key={i}
-                index={i}
-                addNewTask={this.addNewTask}
-                removeTask={this.removeTask}
-                removeList={() => {
-                  this.removeList(i);
-                }}
-                editTitle={this.editTitle}
-                id={list.id}
-                title={list.title}
-                todos={this.state.todos.filter(
-                  ({ listId }) => listId === list.id
-                )}
-              />
-            );
-          })}
-          <AddList addList={this.addList} className="column" />
+        <div className="container">
+          <br />
+          <div className="columns">
+            {this.state.lists.map((list, i) => {
+              return (
+                <TodoList
+                  key={i}
+                  index={i}
+                  addNewTask={this.addNewTask}
+                  removeTask={this.removeTask}
+                  removeList={() => {
+                    this.removeList(i);
+                  }}
+                  editTitle={this.editTitle}
+                  id={list.id}
+                  title={list.title}
+                  todos={this.state.todos.filter(
+                    ({ listId }) => listId === list.id
+                  )}
+                />
+              );
+            })}
+            <AddList addList={this.addList} className="column" />
+          </div>
         </div>
       </div>
     );

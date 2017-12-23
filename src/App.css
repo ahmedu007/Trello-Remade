@@ -9,12 +9,12 @@ body {
 
 /* basic stylings ------------------------------------------ */
 .container {
-  font-family: "Roboto";
-  width: 600px;
-  margin: 30px auto 0;
-  display: block;
-  background: #fff;
+  margin: auto;
   padding: 10px 50px 50px;
+  /* font-family: "Roboto";
+  width: 600px;
+  display: block;
+  background: #fff; */
 }
 h2 {
   text-align: center;
