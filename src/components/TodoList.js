@@ -109,7 +109,7 @@ class TodoList extends React.Component {
           </ul>
         </div>
         <form className="container-2" onSubmit={this.handleSubmit}>
-          <span className="icon">
+          <span className="icon" style={{ marginLeft: "5%" }}>
             <i className="fa fa-plus fa-2x" />
           </span>
           <input
