@@ -4,6 +4,7 @@ import shortid from "shortid";
 import TodoList from "./components/TodoList";
 import AddList from "./components/AddList";
 
+import ButtonAppBar from "./components/AppBar";
 import "./App.css";
 
 class App extends Component {
@@ -92,7 +93,9 @@ class App extends Component {
   render() {
     return (
       <div>
-        <h2>Welcome to Custom Trello Board</h2>
+        <ButtonAppBar />
+        <br />
+        <br />
         <div className="columns">
           {this.state.lists.map((list, i) => {
             return (
