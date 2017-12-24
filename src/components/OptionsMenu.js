@@ -3,6 +3,7 @@ import Menu, { MenuItem } from "material-ui/Menu";
 import { ListItemIcon } from "material-ui/List";
 import IconButton from "material-ui/IconButton";
 import MoreVertIcon from "material-ui-icons/MoreVert";
+import WarningDiag from "./WarningDiag";
 
 class SimpleMenu extends React.Component {
   state = {
@@ -38,14 +39,8 @@ class SimpleMenu extends React.Component {
           onClose={this.handleClose}
         >
           <MenuItem onClick={this.props.editListTitle}>Edit Title</MenuItem>
-          <MenuItem
-            style={{ color: "red" }}
-            onClick={() => {
-              this.props.removeList();
-              this.setState({ open: false });
-            }}
-          >
-            Delete List
+          <MenuItem>
+            <WarningDiag removeList={this.props.removeList} />
           </MenuItem>
           <MenuItem onClick={this.handleClose}>
             Archive all cards in the List
