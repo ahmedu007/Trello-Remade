@@ -5,6 +5,7 @@ import TodoList from "./components/TodoList";
 import AddList from "./components/AddList";
 
 import ButtonAppBar from "./components/AppBar";
+// import SideButtons from "./components/SideButtons";
 import "./App.css";
 
 class App extends Component {
@@ -95,6 +96,10 @@ class App extends Component {
       <div>
         <ButtonAppBar />
         <div className="container">
+          <br />
+          <br />
+          <br />
+          <br />
           <br />
           <div className="columns">
             {this.state.lists.map((list, i) => {

@@ -3,7 +3,23 @@ import TaskCard from "./TaskCard";
 import Dragula from "react-dragula";
 import enhanceWithClickOutside from "react-click-outside";
 
+import { ListItem, ListItemIcon, ListItemText } from "material-ui/List";
+import IconButton from "material-ui/IconButton";
+import MoreVertIcon from "material-ui-icons/MoreVert";
+import { withStyles } from "material-ui/styles";
+
+import SimpleMenu from "./OptionsMenu";
+
 import "./TodoList.css";
+
+const styles = theme => ({
+  button: {
+    margin: theme.spacing.unit
+  },
+  input: {
+    display: "none"
+  }
+});
 
 class TodoList extends React.Component {
   constructor(props) {
@@ -11,6 +27,7 @@ class TodoList extends React.Component {
     this.state = {
       title: "",
       isEditing: false,
+      menu: false,
       text: ""
     };
     this.handleChange = this.handleChange.bind(this);
@@ -22,7 +39,8 @@ class TodoList extends React.Component {
 
   handleClickOutside() {
     this.setState({
-      isEditing: false
+      isEditing: false,
+      menu: false
     });
   }
 
@@ -86,11 +104,14 @@ class TodoList extends React.Component {
           </form>
         ) : (
           <span>
-            <span className="title is-5">{title}</span>
-            <a style={{ color: "black" }} onClick={this.editListTitle}>
+            <ListItem>
+              <ListItemText primary={title} />
+              <SimpleMenu />
+            </ListItem>
+            {/* <a style={{ color: "black" }} onClick={this.editListTitle}>
               <i className="fa fa-pencil" />
             </a>
-            <button className="delete" onClick={this.props.removeList} />
+            <button className="delete" onClick={this.props.removeList} /> */}
           </span>
         )}
 
@@ -126,4 +147,4 @@ class TodoList extends React.Component {
   }
 }
 
-export default enhanceWithClickOutside(TodoList);
+export default withStyles(styles)(enhanceWithClickOutside(TodoList));

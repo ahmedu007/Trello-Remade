@@ -5,6 +5,7 @@
 body {
   overflow-x: scroll;
   height: 100vh;
+  background-color: #dddddd;
 }
 
 /* basic stylings ------------------------------------------ */

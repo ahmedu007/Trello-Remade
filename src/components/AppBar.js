@@ -24,7 +24,7 @@ const styles = {
 function ButtonAppBar(props) {
   const { classes } = props;
   return (
-    <AppBar position="static">
+    <AppBar>
       <Toolbar>
         <IconButton
           className={classes.menuButton}
