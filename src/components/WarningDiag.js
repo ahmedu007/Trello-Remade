@@ -52,7 +52,7 @@ class WarningDiag extends React.Component {
               </DialogContentText>
             </DialogContent>
             <DialogActions>
-              <Button onClick={this.handleClose} color="primary">
+              <Button onClick={this.props.disagree} color="primary">
                 Disagree
               </Button>
               <Button onClick={this.props.removeList} color="primary">

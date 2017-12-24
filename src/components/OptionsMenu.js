@@ -19,6 +19,11 @@ class SimpleMenu extends React.Component {
     this.setState({ open: false });
   };
 
+  handleDeleteList = () => {
+    this.props.removeList();
+    this.setState({ open: false });
+  };
+
   render() {
     return (
       <div>
@@ -40,7 +45,10 @@ class SimpleMenu extends React.Component {
         >
           <MenuItem onClick={this.props.editListTitle}>Edit Title</MenuItem>
           <MenuItem>
-            <WarningDiag removeList={this.props.removeList} />
+            <WarningDiag
+              removeList={this.handleDeleteList}
+              disagree={this.handleClose}
+            />
           </MenuItem>
           <MenuItem onClick={this.handleClose}>
             Archive all cards in the List
