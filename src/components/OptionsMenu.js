@@ -26,6 +26,7 @@ class SimpleMenu extends React.Component {
             aria-owns={this.state.open ? "simple-menu" : null}
             aria-haspopup="true"
             onClick={this.handleClick}
+            style={{ marginRight: "1%" }}
           >
             <MoreVertIcon />
           </IconButton>
@@ -38,6 +39,7 @@ class SimpleMenu extends React.Component {
         >
           <MenuItem onClick={this.props.editListTitle}>Edit Title</MenuItem>
           <MenuItem
+            style={{ color: "red" }}
             onClick={() => {
               this.props.removeList();
               this.setState({ open: false });
