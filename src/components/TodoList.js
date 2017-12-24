@@ -5,6 +5,7 @@ import enhanceWithClickOutside from "react-click-outside";
 
 import { ListItem, ListItemText } from "material-ui/List";
 import { withStyles } from "material-ui/styles";
+import Paper from "material-ui/Paper";
 
 import SimpleMenu from "./OptionsMenu";
 
@@ -91,58 +92,60 @@ class TodoList extends React.Component {
     const { todos, title } = this.props;
     return (
       <div className="column">
-        {this.state.isEditing ? (
-          <form onSubmit={this.handleTitleSubmit}>
-            <input
-              type="text"
-              value={this.state.title}
-              onChange={this.handleTitleChange}
-              placeholder={this.props.title}
-            />
-          </form>
-        ) : (
-          <span>
-            <ListItem>
-              <ListItemText primary={title} />
-              <SimpleMenu
-                editListTitle={this.editListTitle}
-                removeList={this.props.removeList}
+        <Paper>
+          {this.state.isEditing ? (
+            <form onSubmit={this.handleTitleSubmit}>
+              <input
+                type="text"
+                value={this.state.title}
+                onChange={this.handleTitleChange}
+                placeholder={this.props.title}
               />
-            </ListItem>
-            {/* <a style={{ color: "black" }} onClick={this.editListTitle}>
+            </form>
+          ) : (
+            <span>
+              <ListItem>
+                <ListItemText primary={title} />
+                <SimpleMenu
+                  editListTitle={this.editListTitle}
+                  removeList={this.props.removeList}
+                />
+              </ListItem>
+              {/* <a style={{ color: "black" }} onClick={this.editListTitle}>
               <i className="fa fa-pencil" />
             </a>
             <button className="delete" onClick={this.props.removeList} /> */}
-          </span>
-        )}
+            </span>
+          )}
 
-        <div className="content">
-          <ul ref={this.dragulaDecorator} style={{ marginLeft: "-8%" }}>
-            {todos.map((tasks, i) => {
-              return (
-                <TaskCard
-                  key={i}
-                  task={tasks.text}
-                  task_id={tasks.task_id}
-                  removeTask={this.props.removeTask}
-                />
-              );
-            })}
-          </ul>
-        </div>
-        <form className="container-2" onSubmit={this.handleSubmit}>
-          <span className="icon" style={{ marginLeft: "5%" }}>
-            <i className="fa fa-plus fa-2x" />
-          </span>
-          <input
-            type="text"
-            id="search"
-            placeholder="Add a task"
-            value={this.state.text}
-            onChange={this.handleChange}
-          />
-          {/* <input type="submit" value="Add task" /> */}
-        </form>
+          <div className="content">
+            <ul ref={this.dragulaDecorator} style={{ marginLeft: "-8%" }}>
+              {todos.map((tasks, i) => {
+                return (
+                  <TaskCard
+                    key={i}
+                    task={tasks.text}
+                    task_id={tasks.task_id}
+                    removeTask={this.props.removeTask}
+                  />
+                );
+              })}
+            </ul>
+          </div>
+          <form className="container-2" onSubmit={this.handleSubmit}>
+            <span className="icon" style={{ marginLeft: "5%" }}>
+              <i className="fa fa-plus fa-2x" />
+            </span>
+            <input
+              type="text"
+              id="search"
+              placeholder="Add a task"
+              value={this.state.text}
+              onChange={this.handleChange}
+            />
+            {/* <input type="submit" value="Add task" /> */}
+          </form>
+        </Paper>
       </div>
     );
   }
