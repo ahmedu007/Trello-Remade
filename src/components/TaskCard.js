@@ -2,8 +2,9 @@ import React from "react";
 
 import { withStyles } from "material-ui/styles";
 import List, { ListItem, ListItemIcon, ListItemText } from "material-ui/List";
-import Divider from "material-ui/Divider";
 import DeleteIcon from "material-ui-icons/Delete";
+
+import Paper from "material-ui/Paper";
 
 const styles = theme => ({
   root: {
@@ -24,13 +25,14 @@ const TaskCard = props => {
   };
   return (
     <List dense={true}>
-      <ListItem button>
-        <ListItemText primary={props.task} style={{ marginTop: "7%" }} />
-        <ListItemIcon>
-          <DeleteIcon onClick={handleClick} />
-        </ListItemIcon>
-      </ListItem>
-      <Divider />
+      <Paper>
+        <ListItem button>
+          <ListItemText primary={props.task} style={{ marginTop: "7%" }} />
+          <ListItemIcon>
+            <DeleteIcon onClick={handleClick} />
+          </ListItemIcon>
+        </ListItem>
+      </Paper>
     </List>
   );
 };
