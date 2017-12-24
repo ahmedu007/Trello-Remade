@@ -1,5 +1,4 @@
 import React from "react";
-import Button from "material-ui/Button";
 import Menu, { MenuItem } from "material-ui/Menu";
 import { ListItemIcon } from "material-ui/List";
 import IconButton from "material-ui/IconButton";
@@ -37,8 +36,15 @@ class SimpleMenu extends React.Component {
           open={this.state.open}
           onClose={this.handleClose}
         >
-          <MenuItem onClick={this.handleClose}>Edit Title</MenuItem>
-          <MenuItem onClick={this.handleClose}>Delete List</MenuItem>
+          <MenuItem onClick={this.props.editListTitle}>Edit Title</MenuItem>
+          <MenuItem
+            onClick={() => {
+              this.props.removeList();
+              this.setState({ open: false });
+            }}
+          >
+            Delete List
+          </MenuItem>
           <MenuItem onClick={this.handleClose}>
             Archive all cards in the List
           </MenuItem>

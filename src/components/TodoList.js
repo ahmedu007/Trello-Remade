@@ -3,9 +3,7 @@ import TaskCard from "./TaskCard";
 import Dragula from "react-dragula";
 import enhanceWithClickOutside from "react-click-outside";
 
-import { ListItem, ListItemIcon, ListItemText } from "material-ui/List";
-import IconButton from "material-ui/IconButton";
-import MoreVertIcon from "material-ui-icons/MoreVert";
+import { ListItem, ListItemText } from "material-ui/List";
 import { withStyles } from "material-ui/styles";
 
 import SimpleMenu from "./OptionsMenu";
@@ -106,7 +104,10 @@ class TodoList extends React.Component {
           <span>
             <ListItem>
               <ListItemText primary={title} />
-              <SimpleMenu />
+              <SimpleMenu
+                editListTitle={this.editListTitle}
+                removeList={this.props.removeList}
+              />
             </ListItem>
             {/* <a style={{ color: "black" }} onClick={this.editListTitle}>
               <i className="fa fa-pencil" />
