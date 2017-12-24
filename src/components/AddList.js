@@ -32,6 +32,7 @@ class AddList extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit} className="column">
+        <br />
         <div className="group">
           <input
             type="text"
