@@ -6,6 +6,7 @@ import AddList from "./components/AddList";
 
 import ButtonAppBar from "./components/AppBar";
 import "./App.css";
+import SimpleSnackbar from "./components/Snackbar";
 
 class App extends Component {
   constructor() {
@@ -42,7 +43,8 @@ class App extends Component {
           text: "Another item on another list",
           task_id: 83465640794226190
         }
-      ]
+      ],
+      snackbar: false
     };
     this.addList = this.addList.bind(this);
     this.addNewTask = this.addNewTask.bind(this);
@@ -69,7 +71,8 @@ class App extends Component {
   removeTask(id) {
     const todos = this.state.todos.filter(({ task_id }) => task_id !== id);
     this.setState({
-      todos
+      todos,
+      snackbar: true
     });
   }
 
@@ -89,6 +92,18 @@ class App extends Component {
       lists
     });
   }
+
+  toggleSnackbar = () => {
+    this.setState({ snackbar: true });
+  };
+
+  snackbarClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    this.setState({ snackbar: false });
+  };
 
   render() {
     return (
@@ -120,6 +135,11 @@ class App extends Component {
                 />
               );
             })}
+            <SimpleSnackbar
+              open={this.state.snackbar}
+              handleClick={() => this.toggleSnackbar()}
+              handleClose={this.snackbarClose}
+            />
             <AddList addList={this.addList} className="column" />
           </div>
         </div>

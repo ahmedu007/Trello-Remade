@@ -103,19 +103,13 @@ class TodoList extends React.Component {
               />
             </form>
           ) : (
-            <span>
-              <ListItem>
-                <ListItemText primary={title} />
-                <SimpleMenu
-                  editListTitle={this.editListTitle}
-                  removeList={this.props.removeList}
-                />
-              </ListItem>
-              {/* <a style={{ color: "black" }} onClick={this.editListTitle}>
-              <i className="fa fa-pencil" />
-            </a>
-            <button className="delete" onClick={this.props.removeList} /> */}
-            </span>
+            <ListItem>
+              <ListItemText primary={title} />
+              <SimpleMenu
+                editListTitle={this.editListTitle}
+                removeList={this.props.removeList}
+              />
+            </ListItem>
           )}
 
           <div className="content">
