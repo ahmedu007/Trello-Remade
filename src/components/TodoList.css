@@ -1,7 +1,7 @@
 .box {
   margin: 100px auto;
   width: 300px;
-  height: 50px;
+  height: 300px;
 }
 
 .container-2 {
@@ -12,7 +12,7 @@
 }
 
 .container-2 input#search {
-  width: 50px;
+  width: 10%;
   height: 50px;
   background: #2b303b;
   border: none;
@@ -54,7 +54,7 @@
   position: absolute;
   top: 50%;
   margin-left: 3%;
-  margin-top: 17px;
+  margin-top: 5%;
   z-index: 1;
   color: #4f5b66;
 }
@@ -62,11 +62,11 @@
 .container-2 input#search:focus,
 .container-2 input#search:active {
   outline: none;
-  width: 300px;
+  width: 100%;
 }
 
 .container-2:hover input#search {
-  width: 300px;
+  width: 100%;
 }
 
 .container-2:hover .icon {

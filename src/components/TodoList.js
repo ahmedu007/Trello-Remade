@@ -119,7 +119,7 @@ class TodoList extends React.Component {
           )}
 
           <div className="content">
-            <ul ref={this.dragulaDecorator} style={{ marginLeft: "-8%" }}>
+            <ul ref={this.dragulaDecorator} style={{ marginLeft: "-7%" }}>
               {todos.map((tasks, i) => {
                 return (
                   <TaskCard

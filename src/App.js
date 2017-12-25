@@ -94,7 +94,7 @@ class App extends Component {
     return (
       <div>
         <ButtonAppBar />
-        <div className="container">
+        <div className="container" style={{ paddingLeft: "0%" }}>
           <br />
           <br />
           <br />

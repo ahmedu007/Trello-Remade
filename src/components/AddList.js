@@ -32,8 +32,7 @@ class AddList extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit} className="column">
-        <br />
-        <div className="group">
+        <div className="group" style={{ marginTop: "4%" }}>
           <input
             type="text"
             required
