@@ -5,7 +5,6 @@ import TodoList from "./components/TodoList";
 import AddList from "./components/AddList";
 
 import ButtonAppBar from "./components/AppBar";
-// import SideButtons from "./components/SideButtons";
 import "./App.css";
 
 class App extends Component {
