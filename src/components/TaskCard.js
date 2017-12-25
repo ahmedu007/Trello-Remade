@@ -25,7 +25,7 @@ const TaskCard = props => {
   };
   return (
     <List dense={true}>
-      <Paper>
+      <Paper style={{ maxHeight: "12%" }}>
         <ListItem button>
           <ListItemText primary={props.task} style={{ marginTop: "7%" }} />
           <ListItemIcon>

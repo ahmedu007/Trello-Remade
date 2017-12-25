@@ -14,22 +14,6 @@ const styles = theme => ({
 });
 
 class SimpleSnackbar extends React.Component {
-  state = {
-    open: false
-  };
-
-  //   handleClick = () => {
-  //     this.setState({ open: true });
-  //   };
-
-  //   handleClose = (event, reason) => {
-  //     if (reason === "clickaway") {
-  //       return;
-  //     }
-
-  //     this.setState({ open: false });
-  //   };
-
   render() {
     const { classes } = this.props;
     return (
