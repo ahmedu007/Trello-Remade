@@ -115,7 +115,7 @@ class TodoList extends React.Component {
           <div className="content">
             <ul
               ref={this.dragulaDecorator}
-              style={{ marginLeft: "-7%", maxWidth: "125%" }}
+              style={{ marginLeft: "-30px", maxWidth: "125%" }}
             >
               {todos.map((tasks, i) => {
                 return (
@@ -140,7 +140,6 @@ class TodoList extends React.Component {
               value={this.state.text}
               onChange={this.handleChange}
             />
-            {/* <input type="submit" value="Add task" /> */}
           </form>
         </Paper>
       </div>
