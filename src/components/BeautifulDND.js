@@ -1,5 +1,9 @@
 import React, { Component } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import List, { ListItem, ListItemIcon, ListItemText } from "material-ui/List";
+import DeleteIcon from "material-ui-icons/Delete";
+
+import Paper from "material-ui/Paper";
 
 // fake data generator
 const getItems = count =>
@@ -35,7 +39,8 @@ const getItemStyle = (draggableStyle, isDragging) => ({
 const getListStyle = isDraggingOver => ({
   background: isDraggingOver ? "lightblue" : "lightgrey",
   padding: grid,
-  width: 250
+  width: "auto",
+  marginLeft: 28
 });
 
 class BeautifulDND extends Component {
@@ -45,6 +50,7 @@ class BeautifulDND extends Component {
       items: getItems(3)
     };
     this.onDragEnd = this.onDragEnd.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
@@ -76,6 +82,10 @@ class BeautifulDND extends Component {
     });
   }
 
+  handleClick = event => {
+    this.props.removeTask(this.props.task.task_id);
+  };
+
   // Normally you would want to split things out into separate components.
   // But in this example everything is just done in one place for simplicity
   render() {
@@ -90,6 +100,28 @@ class BeautifulDND extends Component {
               {this.state.items.map(item => (
                 <Draggable key={item.task_id} draggableId={item.task_id}>
                   {(provided, snapshot) => (
+                    // <List
+                    //   dense={true}
+                    //   ref={provided.innerRef}
+                    //   style={getItemStyle(
+                    //     provided.draggableStyle,
+                    //     snapshot.isDragging
+                    //   )}
+                    //   {...provided.dragHandleProps}
+                    // >
+                    //   <Paper style={{ maxHeight: "12%" }}>
+                    //     <ListItem button>
+                    //       <ListItemText
+                    //         primary={item.text}
+                    //         style={{ marginTop: "7%" }}
+                    //       />
+                    //       <ListItemIcon>
+                    //         <DeleteIcon onClick={this.handleClick} />
+                    //       </ListItemIcon>
+                    //     </ListItem>
+                    //     {provided.placeholder}
+                    //   </Paper>
+                    // </List>
                     <div>
                       <div
                         ref={provided.innerRef}
@@ -99,7 +131,16 @@ class BeautifulDND extends Component {
                         )}
                         {...provided.dragHandleProps}
                       >
-                        {item.text}
+                        <ListItem button>
+                          <ListItemText
+                            primary={item.text}
+                            style={{ marginTop: "7%" }}
+                          />
+                          <ListItemIcon>
+                            <DeleteIcon onClick={this.handleClick} />
+                          </ListItemIcon>
+                        </ListItem>
+                        {/* {item.text} */}
                       </div>
                       {provided.placeholder}
                     </div>

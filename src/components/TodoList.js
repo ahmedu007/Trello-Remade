@@ -6,6 +6,7 @@ import enhanceWithClickOutside from "react-click-outside";
 import { ListItem, ListItemText } from "material-ui/List";
 import { withStyles } from "material-ui/styles";
 import Paper from "material-ui/Paper";
+import Button from "material-ui/Button";
 
 import SimpleMenu from "./OptionsMenu";
 
@@ -134,19 +135,19 @@ class TodoList extends React.Component {
               })}
             </ul>
           </div>
-          <form className="container-2" onSubmit={this.handleSubmit}>
-            <span className="icon" style={{ marginLeft: "5%" }}>
-              <i className="fa fa-plus fa-2x" />
-            </span>
-            <input
-              type="text"
-              id="search"
-              placeholder="Add a task"
-              value={this.state.text}
-              onChange={this.handleChange}
-            />
-          </form>
         </Paper>
+        <form className="container-2" onSubmit={this.handleSubmit}>
+          <span className="icon" style={{ marginLeft: "5%" }}>
+            <i className="fa fa-plus fa-2x" />
+          </span>
+          <input
+            type="text"
+            id="search"
+            placeholder="Add a task"
+            value={this.state.text}
+            onChange={this.handleChange}
+          />
+        </form>
       </div>
     );
   }
