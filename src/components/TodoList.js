@@ -10,6 +10,7 @@ import Paper from "material-ui/Paper";
 import SimpleMenu from "./OptionsMenu";
 
 import "./TodoList.css";
+import BeautifulDND from "./BeautifulDND";
 
 const styles = theme => ({
   button: {
@@ -114,18 +115,22 @@ class TodoList extends React.Component {
 
           <div className="content">
             <ul
-              ref={this.dragulaDecorator}
+              // ref={this.dragulaDecorator}
               style={{ marginLeft: "-30px", maxWidth: "125%" }}
             >
+              <BeautifulDND
+                task={this.props.todos}
+                // task_id={tasks.task_id}
+                removeTask={this.props.removeTask}
+              />
               {todos.map((tasks, i) => {
-                return (
-                  <TaskCard
-                    key={i}
-                    task={tasks.text}
-                    task_id={tasks.task_id}
-                    removeTask={this.props.removeTask}
-                  />
-                );
+                return;
+                // <TaskCard
+                //   key={i}
+                //   task={tasks.text}
+                //   task_id={tasks.task_id}
+                //   removeTask={this.props.removeTask}
+                // />
               })}
             </ul>
           </div>
