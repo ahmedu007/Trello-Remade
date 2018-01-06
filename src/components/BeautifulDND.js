@@ -60,8 +60,6 @@ class BeautifulDND extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log("this", this.props.task.length);
-    console.log("next", nextProps.task.length);
     if (this.props.task.length !== nextProps.task.length) {
       this.setState({ items: nextProps.task });
     }
