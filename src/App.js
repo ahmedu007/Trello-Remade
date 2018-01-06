@@ -51,6 +51,7 @@ class App extends Component {
     this.removeTask = this.removeTask.bind(this);
     this.removeList = this.removeList.bind(this);
     this.editTitle = this.editTitle.bind(this);
+    this.removeAllTasksFromList = this.removeAllTasksFromList.bind(this);
   }
 
   addList(title, id) {
@@ -73,6 +74,14 @@ class App extends Component {
     this.setState({
       todos,
       snackbar: true
+    });
+  }
+
+  removeAllTasksFromList(id) {
+    const todos = this.state.todos.filter(({ listId }) => listId !== id);
+    console.log(todos);
+    this.setState({
+      todos
     });
   }
 
@@ -126,6 +135,7 @@ class App extends Component {
                   removeList={() => {
                     this.removeList(i);
                   }}
+                  removeAllTasksFromList={this.removeAllTasksFromList}
                   editTitle={this.editTitle}
                   id={list.id}
                   title={list.title}

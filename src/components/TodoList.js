@@ -100,6 +100,9 @@ class TodoList extends React.Component {
               <SimpleMenu
                 editListTitle={this.editListTitle}
                 removeList={this.props.removeList}
+                removeAllTasksFromList={() =>
+                  this.props.removeAllTasksFromList(this.props.id)
+                }
               />
             </ListItem>
           )}

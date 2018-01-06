@@ -24,6 +24,11 @@ class SimpleMenu extends React.Component {
     this.setState({ open: false });
   };
 
+  handleDeleteTasks = () => {
+    this.props.removeAllTasksFromList();
+    this.setState({ open: false });
+  };
+
   render() {
     return (
       <div>
@@ -50,7 +55,7 @@ class SimpleMenu extends React.Component {
               disagree={this.handleClose}
             />
           </MenuItem>
-          <MenuItem onClick={this.handleClose}>
+          <MenuItem onClick={this.handleDeleteTasks}>
             Archive all cards in the List
           </MenuItem>
         </Menu>
