@@ -1,17 +1,15 @@
 import React, { Component } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import List, { ListItem, ListItemIcon, ListItemText } from "material-ui/List";
+import { ListItem, ListItemIcon, ListItemText } from "material-ui/List";
 import DeleteIcon from "material-ui-icons/Delete";
 
-import Paper from "material-ui/Paper";
-
 // fake data generator
-const getItems = count =>
-  Array.from({ length: count }, (v, k) => k).map(k => ({
-    task_id: `item-${k}`,
-    text: `item ${k}`,
-    list_id: `itemList ${k}`
-  }));
+// const getItems = count =>
+//   Array.from({ length: count }, (v, k) => k).map(k => ({
+//     task_id: `item-${k}`,
+//     text: `item ${k}`,
+//     list_id: `itemList ${k}`
+//   }));
 
 // a little function to help us with reordering the result
 const reorder = (list, startIndex, endIndex) => {
