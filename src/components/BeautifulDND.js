@@ -92,7 +92,7 @@ class BeautifulDND extends Component {
   // But in this example everything is just done in one place for simplicity
   render() {
     return (
-      <DragDropContext onDragEnd={this.onDragEnd}>
+      <DragDropContext onDragEnd={this.props.onDragEnd}>
         <Droppable droppableId="droppable">
           {(provided, snapshot) => (
             <div

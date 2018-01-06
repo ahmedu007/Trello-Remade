@@ -8,6 +8,14 @@ import ButtonAppBar from "./components/AppBar";
 import "./App.css";
 import SimpleSnackbar from "./components/Snackbar";
 
+const reorder = (list, startIndex, endIndex) => {
+  const result = Array.from(list);
+  const [removed] = result.splice(startIndex, 1);
+  result.splice(endIndex, 0, removed);
+
+  return result;
+};
+
 class App extends Component {
   constructor() {
     super();
@@ -51,6 +59,7 @@ class App extends Component {
     this.removeTask = this.removeTask.bind(this);
     this.removeList = this.removeList.bind(this);
     this.editTitle = this.editTitle.bind(this);
+    this.onDragEnd = this.onDragEnd.bind(this);
   }
 
   addList(title, id) {
@@ -105,6 +114,23 @@ class App extends Component {
     this.setState({ snackbar: false });
   };
 
+  onDragEnd(result) {
+    // dropped outside the list
+    if (!result.destination) {
+      return;
+    }
+
+    const todos = reorder(
+      this.state.todos,
+      result.source.index,
+      result.destination.index
+    );
+
+    this.setState({
+      todos
+    });
+  }
+
   render() {
     return (
       <div>
@@ -127,6 +153,7 @@ class App extends Component {
                     this.removeList(i);
                   }}
                   editTitle={this.editTitle}
+                  onDragEnd={this.onDragEnd}
                   id={list.id}
                   title={list.title}
                   todos={this.state.todos.filter(
