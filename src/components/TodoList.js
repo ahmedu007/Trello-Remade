@@ -83,7 +83,7 @@ class TodoList extends React.Component {
   render() {
     const { todos, title } = this.props;
     return (
-      <div className="column">
+      <div className="column" style={{ maxWidth: "25%" }}>
         <Paper>
           {this.state.isEditing ? (
             <form onSubmit={this.handleTitleSubmit}>

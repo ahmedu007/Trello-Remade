@@ -5,8 +5,8 @@ import TodoList from "./components/TodoList";
 import AddList from "./components/AddList";
 
 import ButtonAppBar from "./components/AppBar";
-import "./App.css";
 import SimpleSnackbar from "./components/Snackbar";
+import "./App.css";
 
 class App extends Component {
   constructor() {
@@ -140,7 +140,7 @@ class App extends Component {
               handleClick={() => this.toggleSnackbar()}
               handleClose={this.snackbarClose}
             />
-            <AddList addList={this.addList} className="column" />
+            <AddList addList={this.addList} />
           </div>
         </div>
       </div>
