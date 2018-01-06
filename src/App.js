@@ -25,7 +25,7 @@ class App extends Component {
       todos: [
         {
           listId: 1036028926122.7329,
-          text: "Fist item",
+          text: "Drag me down",
           task_id: 106056736787116130
         },
         {
@@ -40,11 +40,14 @@ class App extends Component {
         },
         {
           listId: 1162410477426.691,
-          text: "Another item on another list",
+          text: "I can be dragged Up or down in this list",
           task_id: 83465640794226190
         }
       ],
-      snackbar: false
+      snackbar: {
+        open: false,
+        message: ""
+      }
     };
     this.addList = this.addList.bind(this);
     this.addNewTask = this.addNewTask.bind(this);
@@ -73,14 +76,21 @@ class App extends Component {
     const todos = this.state.todos.filter(({ task_id }) => task_id !== id);
     this.setState({
       todos,
-      snackbar: true
+      snackbar: {
+        open: true,
+        message: "Task successfully removed"
+      }
     });
   }
 
   removeAllTasksFromList(id) {
     const todos = this.state.todos.filter(({ listId }) => listId !== id);
     this.setState({
-      todos
+      todos,
+      snackbar: {
+        open: true,
+        message: "All tasks removed"
+      }
     });
   }
 
@@ -89,7 +99,11 @@ class App extends Component {
     const firstHalf = prevLists.slice(0, i);
     const secHalf = prevLists.slice(i + 1);
     this.setState({
-      lists: firstHalf.concat(secHalf)
+      lists: firstHalf.concat(secHalf),
+      snackbar: {
+        open: true,
+        message: "List was deleted"
+      }
     });
   }
 
@@ -102,7 +116,7 @@ class App extends Component {
   }
 
   toggleSnackbar = () => {
-    this.setState({ snackbar: true });
+    this.setState({ snackbar: { open: !this.state.snackbar.open } });
   };
 
   snackbarClose = (event, reason) => {
@@ -145,9 +159,10 @@ class App extends Component {
               );
             })}
             <SimpleSnackbar
-              open={this.state.snackbar}
+              open={this.state.snackbar.open}
               handleClick={() => this.toggleSnackbar()}
               handleClose={this.snackbarClose}
+              message={this.state.snackbar.message}
             />
             <AddList addList={this.addList} />
           </div>

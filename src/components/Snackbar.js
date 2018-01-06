@@ -15,7 +15,7 @@ const styles = theme => ({
 
 class SimpleSnackbar extends React.Component {
   render() {
-    const { classes } = this.props;
+    const { classes, message } = this.props;
     return (
       <div>
         <Snackbar
@@ -29,7 +29,7 @@ class SimpleSnackbar extends React.Component {
           SnackbarContentProps={{
             "aria-describedby": "message-id"
           }}
-          message={<span id="message-id">Note archived</span>}
+          message={<span id="message-id">{message}</span>}
           action={[
             <Button
               key="undo"
