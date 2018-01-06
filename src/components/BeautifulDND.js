@@ -47,23 +47,25 @@ class BeautifulDND extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: getItems(3)
+      items: this.props.task
     };
     this.onDragEnd = this.onDragEnd.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
 
-  componentDidMount() {
-    this.setState({
-      items: this.props.task
-    });
-  }
+  // componentDidMount() {
+  //   this.setState({
+  //     items: this.props.task
+  //   });
+  // }
 
-  componentWillReceiveProps(nextProps) {
-    if (this.props.task.length < nextProps.task.length) {
-      this.setState({ items: nextProps.task });
-    }
-  }
+  // componentWillReceiveProps(nextProps) {
+  //   console.log("this", this.props.task.length);
+  //   console.log("next", nextProps.task.length);
+  //   if (this.props.task.length < nextProps.task.length) {
+  //     this.setState({ items: nextProps.task });
+  //   }
+  // }
 
   onDragEnd(result) {
     // dropped outside the list
@@ -97,31 +99,10 @@ class BeautifulDND extends Component {
               ref={provided.innerRef}
               style={getListStyle(snapshot.isDraggingOver)}
             >
-              {this.state.items.map(item => (
+              {/* {this.state.items.map(item => ( */}
+              {this.props.task.map(item => (
                 <Draggable key={item.task_id} draggableId={item.task_id}>
                   {(provided, snapshot) => (
-                    // <List
-                    //   dense={true}
-                    //   ref={provided.innerRef}
-                    //   style={getItemStyle(
-                    //     provided.draggableStyle,
-                    //     snapshot.isDragging
-                    //   )}
-                    //   {...provided.dragHandleProps}
-                    // >
-                    //   <Paper style={{ maxHeight: "12%" }}>
-                    //     <ListItem button>
-                    //       <ListItemText
-                    //         primary={item.text}
-                    //         style={{ marginTop: "7%" }}
-                    //       />
-                    //       <ListItemIcon>
-                    //         <DeleteIcon onClick={this.handleClick} />
-                    //       </ListItemIcon>
-                    //     </ListItem>
-                    //     {provided.placeholder}
-                    //   </Paper>
-                    // </List>
                     <div>
                       <div
                         ref={provided.innerRef}
@@ -131,13 +112,20 @@ class BeautifulDND extends Component {
                         )}
                         {...provided.dragHandleProps}
                       >
-                        <ListItem button>
+                        <ListItem
+                          button
+                          style={{ fontSize: "0.75em", maxHeight: "10px" }}
+                        >
                           <ListItemText
                             primary={item.text}
                             style={{ marginTop: "7%" }}
                           />
                           <ListItemIcon>
-                            <DeleteIcon onClick={this.handleClick} />
+                            <DeleteIcon
+                              onClick={() => {
+                                this.props.removeTask(item.task_id);
+                              }}
+                            />
                           </ListItemIcon>
                         </ListItem>
                         {/* {item.text} */}
