@@ -53,19 +53,19 @@ class BeautifulDND extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  // componentDidMount() {
-  //   this.setState({
-  //     items: this.props.task
-  //   });
-  // }
+  componentDidMount() {
+    this.setState({
+      items: this.props.task
+    });
+  }
 
-  // componentWillReceiveProps(nextProps) {
-  //   console.log("this", this.props.task.length);
-  //   console.log("next", nextProps.task.length);
-  //   if (this.props.task.length < nextProps.task.length) {
-  //     this.setState({ items: nextProps.task });
-  //   }
-  // }
+  componentWillReceiveProps(nextProps) {
+    console.log("this", this.props.task.length);
+    console.log("next", nextProps.task.length);
+    if (this.props.task.length !== nextProps.task.length) {
+      this.setState({ items: nextProps.task });
+    }
+  }
 
   onDragEnd(result) {
     // dropped outside the list
@@ -92,15 +92,15 @@ class BeautifulDND extends Component {
   // But in this example everything is just done in one place for simplicity
   render() {
     return (
-      <DragDropContext onDragEnd={this.props.onDragEnd}>
+      <DragDropContext onDragEnd={this.onDragEnd}>
         <Droppable droppableId="droppable">
           {(provided, snapshot) => (
             <div
               ref={provided.innerRef}
               style={getListStyle(snapshot.isDraggingOver)}
             >
-              {/* {this.state.items.map(item => ( */}
-              {this.props.task.map(item => (
+              {this.state.items.map(item => (
+                // {this.props.task.map(item => (
                 <Draggable key={item.task_id} draggableId={item.task_id}>
                   {(provided, snapshot) => (
                     <div>

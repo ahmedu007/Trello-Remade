@@ -123,7 +123,6 @@ class TodoList extends React.Component {
                 task={this.props.todos}
                 // task_id={tasks.task_id}
                 removeTask={this.props.removeTask}
-                onDragEnd={this.props.onDragEnd}
               />
               {todos.map((tasks, i) => {
                 return;
