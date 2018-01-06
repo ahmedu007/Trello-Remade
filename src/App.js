@@ -79,7 +79,6 @@ class App extends Component {
 
   removeAllTasksFromList(id) {
     const todos = this.state.todos.filter(({ listId }) => listId !== id);
-    console.log(todos);
     this.setState({
       todos
     });

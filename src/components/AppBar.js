@@ -8,6 +8,8 @@ import Button from "material-ui/Button";
 import IconButton from "material-ui/IconButton";
 import MenuIcon from "material-ui-icons/Menu";
 
+import DrawersMenu from "./DrawersMenu";
+
 const styles = {
   root: {
     width: "100%"
@@ -26,13 +28,7 @@ function ButtonAppBar(props) {
   return (
     <AppBar>
       <Toolbar>
-        <IconButton
-          className={classes.menuButton}
-          color="contrast"
-          aria-label="Menu"
-        >
-          <MenuIcon />
-        </IconButton>
+        <DrawersMenu />
         <Typography type="title" color="inherit" className={classes.flex}>
           Welcome to Custom Trello Board
         </Typography>
