@@ -1,6 +1,5 @@
 import React from "react";
-import TaskCard from "./TaskCard";
-import Dragula from "react-dragula";
+import BeautifulDND from "./BeautifulDND";
 import enhanceWithClickOutside from "react-click-outside";
 
 import { ListItem, ListItemText } from "material-ui/List";
@@ -59,13 +58,6 @@ class TodoList extends React.Component {
     });
   }
 
-  dragulaDecorator = componentBackingInstance => {
-    if (componentBackingInstance) {
-      let options = {};
-      Dragula([componentBackingInstance], options);
-    }
-  };
-
   editListTitle() {
     this.setState({
       isEditing: !this.state.isEditing
@@ -113,35 +105,23 @@ class TodoList extends React.Component {
           )}
 
           <div className="content">
-            <ul
-              ref={this.dragulaDecorator}
-              style={{ marginLeft: "-30px", maxWidth: "125%" }}
-            >
-              {todos.map((tasks, i) => {
-                return (
-                  <TaskCard
-                    key={i}
-                    task={tasks.text}
-                    task_id={tasks.task_id}
-                    removeTask={this.props.removeTask}
-                  />
-                );
-              })}
+            <ul style={{ marginLeft: "-30px", maxWidth: "125%" }}>
+              <BeautifulDND task={todos} removeTask={this.props.removeTask} />
             </ul>
           </div>
-          <form className="container-2" onSubmit={this.handleSubmit}>
-            <span className="icon" style={{ marginLeft: "5%" }}>
-              <i className="fa fa-plus fa-2x" />
-            </span>
-            <input
-              type="text"
-              id="search"
-              placeholder="Add a task"
-              value={this.state.text}
-              onChange={this.handleChange}
-            />
-          </form>
         </Paper>
+        <form className="container-2" onSubmit={this.handleSubmit}>
+          <span className="icon" style={{ marginLeft: "5%" }}>
+            <i className="fa fa-plus fa-2x" />
+          </span>
+          <input
+            type="text"
+            id="search"
+            placeholder="Add a task"
+            value={this.state.text}
+            onChange={this.handleChange}
+          />
+        </form>
       </div>
     );
   }
