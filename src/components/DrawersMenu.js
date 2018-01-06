@@ -2,11 +2,13 @@ import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "material-ui/styles";
 import Drawer from "material-ui/Drawer";
-import Button from "material-ui/Button";
-import List from "material-ui/List";
+import List, { ListItem, ListItemIcon, ListItemText } from "material-ui/List";
 import Divider from "material-ui/Divider";
 import IconButton from "material-ui/IconButton";
 import MenuIcon from "material-ui-icons/Menu";
+
+import InboxIcon from "material-ui-icons/Inbox";
+import DraftsIcon from "material-ui-icons/Drafts";
 
 const styles = {
   list: {
@@ -36,17 +38,22 @@ class DrawersMenu extends React.Component {
 
     const sideList = (
       <div className={classes.list}>
-        <List>Something</List>
+        <List>Recent Boards</List>
         <Divider />
-        <List>otherMailFolderListItems</List>
-      </div>
-    );
-
-    const fullList = (
-      <div className={classes.listFull}>
-        <List>Something</List>
-        <Divider />
-        <List>otherMailFolderListItems</List>
+        <List>
+          <ListItem button>
+            <ListItemIcon>
+              <InboxIcon />
+            </ListItemIcon>
+            <ListItemText primary="Checklist for groceries" />
+          </ListItem>
+          <ListItem button>
+            <ListItemIcon>
+              <DraftsIcon />
+            </ListItemIcon>
+            <ListItemText primary="Projects to finsh" />
+          </ListItem>
+        </List>
       </div>
     );
 
