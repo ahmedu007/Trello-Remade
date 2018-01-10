@@ -1,6 +1,6 @@
 import React from "react";
 import shortid from "shortid";
-import Icon from "material-ui/Icon";
+import Save from "material-ui-icons/Save";
 import Paper from "material-ui/Paper";
 import { withStyles } from "material-ui/styles";
 import TextField from "material-ui/TextField";
@@ -79,14 +79,9 @@ class AddList extends React.Component {
               onChange={this.handleChange}
               value={this.state.title}
             />
-            <Button
-              className={classes.button}
-              raised
-              color="primary"
-              type="submit"
-            >
-              Send
-              <Icon className={classes.rightIcon}>send</Icon>
+            <Button className={classes.button} raised type="submit">
+              <Save className={classes.leftIcon} />
+              Save
             </Button>
           </form>
         </div>

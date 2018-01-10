@@ -148,3 +148,14 @@ input:focus ~ .highlight {
     background: transparent;
   }
 }
+
+@media screen and (max-width: 320px) {
+  body {
+    font: 0.25rem;
+  }
+}
+@media screen and (max-width: 1204px) {
+  body {
+    font: 1rem;
+  }
+}
