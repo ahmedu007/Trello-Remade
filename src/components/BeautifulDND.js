@@ -113,6 +113,7 @@ class BeautifulDND extends Component {
                   )}
                 </Draggable>
               ))}
+
               {provided.placeholder}
             </div>
           )}

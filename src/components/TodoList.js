@@ -9,6 +9,7 @@ import Paper from "material-ui/Paper";
 import SimpleMenu from "./OptionsMenu";
 
 import "./TodoList.css";
+import List from "material-ui/List/List";
 
 const styles = theme => ({
   button: {
@@ -108,9 +109,9 @@ class TodoList extends React.Component {
           )}
 
           <div className="content">
-            <ul style={{ marginLeft: "-30px", maxWidth: "125%" }}>
+            <List style={{ marginLeft: "-30px", maxWidth: "125%" }}>
               <BeautifulDND task={todos} removeTask={this.props.removeTask} />
-            </ul>
+            </List>
           </div>
         </Paper>
         <form className="container-2" onSubmit={this.handleSubmit}>

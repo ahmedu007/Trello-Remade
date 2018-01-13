@@ -62,7 +62,7 @@ class AddList extends React.Component {
     const { classes } = this.props;
 
     return (
-      <Paper style={{ maxWidth: "25%", marginTop: "0.8%", height: "10%" }}>
+      <Paper id="list" style={{ marginTop: "0.8%", height: "10%" }}>
         <div className="column">
           <form
             onSubmit={this.handleSubmit}
