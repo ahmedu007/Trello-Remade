@@ -72,3 +72,9 @@
 .container-2:hover .icon {
   color: #93a2ad;
 }
+
+@media screen and (min-width: 480px) {
+  #list {
+    max-width: 25%;
+  }
+}
