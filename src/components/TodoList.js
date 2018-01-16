@@ -7,6 +7,7 @@ import { withStyles } from "material-ui/styles";
 import Paper from "material-ui/Paper";
 
 import SimpleMenu from "./OptionsMenu";
+import Input from "material-ui/Input";
 
 import "./TodoList.css";
 import List from "material-ui/List/List";
@@ -114,18 +115,32 @@ class TodoList extends React.Component {
             </List>
           </div>
         </Paper>
-        <form className="container-2" onSubmit={this.handleSubmit}>
-          <span className="icon" style={{ marginLeft: "5%" }}>
+        <br />
+        <Paper style={{ textAlign: "center" }}>
+          <br />
+          <form className="container-2" onSubmit={this.handleSubmit}>
+            <Input
+              label="Task"
+              placeholder="Add a task"
+              inputProps={{
+                "aria-label": "Description"
+              }}
+              value={this.state.text}
+              onChange={this.handleChange}
+            />
+            {/* <span className="icon" style={{ marginLeft: "5%" }}>
             <i className="fa fa-plus fa-2x" />
-          </span>
-          <input
+            </span>
+            <input
             type="text"
             id="search"
             placeholder="Add a task"
             value={this.state.text}
             onChange={this.handleChange}
-          />
-        </form>
+          /> */}
+          </form>
+          <br />
+        </Paper>
       </div>
     );
   }
