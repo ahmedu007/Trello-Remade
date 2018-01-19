@@ -1,79 +1,79 @@
-import React, { Component } from "react";
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import { ListItem, ListItemIcon, ListItemText } from "material-ui/List";
-import DeleteIcon from "material-ui-icons/Delete";
+import React, { Component } from 'react'
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
+import { ListItem, ListItemIcon, ListItemText } from 'material-ui/List'
+import DeleteIcon from 'material-ui-icons/Delete'
 
 const reorder = (list, startIndex, endIndex) => {
-  const result = Array.from(list);
-  const [removed] = result.splice(startIndex, 1);
-  result.splice(endIndex, 0, removed);
+  const result = Array.from(list)
+  const [removed] = result.splice(startIndex, 1)
+  result.splice(endIndex, 0, removed)
 
-  return result;
-};
+  return result
+}
 
-const grid = 8;
+const grid = 8
 const getItemStyle = (draggableStyle, isDragging) => ({
-  userSelect: "none",
+  userSelect: 'none',
   padding: grid * 2,
   margin: `0 0 ${grid}px 0`,
 
-  background: isDragging ? "lightgreen" : "lightgrey",
+  background: isDragging ? 'lightgreen' : 'lightgrey',
 
   ...draggableStyle
-});
+})
 const getListStyle = isDraggingOver => ({
-  background: isDraggingOver ? "grey" : "lightgrey",
+  background: isDraggingOver ? 'grey' : 'lightgrey',
   padding: grid,
-  width: "auto",
+  width: 'auto',
   marginLeft: 28
-});
+})
 
 class BeautifulDND extends Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
       items: this.props.task
-    };
-    this.onDragEnd = this.onDragEnd.bind(this);
-    this.handleClick = this.handleClick.bind(this);
+    }
+    this.onDragEnd = this.onDragEnd.bind(this)
+    this.handleClick = this.handleClick.bind(this)
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.setState({
       items: this.props.task
-    });
+    })
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps (nextProps) {
     if (this.props.task.length !== nextProps.task.length) {
-      this.setState({ items: nextProps.task });
+      this.setState({ items: nextProps.task })
     }
   }
 
-  onDragEnd(result) {
+  onDragEnd (result) {
     if (!result.destination) {
-      return;
+      return
     }
 
     const items = reorder(
       this.state.items,
       result.source.index,
       result.destination.index
-    );
+    )
 
     this.setState({
       items
-    });
+    })
   }
 
   handleClick = event => {
-    this.props.removeTask(this.props.task.task_id);
-  };
+    this.props.removeTask(this.props.task.task_id)
+  }
 
-  render() {
+  render () {
     return (
       <DragDropContext onDragEnd={this.onDragEnd}>
-        <Droppable droppableId="droppable">
+        <Droppable droppableId='droppable'>
           {(provided, snapshot) => (
             <div
               ref={provided.innerRef}
@@ -93,16 +93,16 @@ class BeautifulDND extends Component {
                       >
                         <ListItem
                           button
-                          style={{ fontSize: "0.75em", maxHeight: "10px" }}
+                          style={{ fontSize: '0.70em', maxHeight: '10px' }}
                         >
                           <ListItemText
                             primary={item.text}
-                            style={{ marginTop: "7%" }}
+                            style={{ marginTop: '7%' }}
                           />
                           <ListItemIcon>
                             <DeleteIcon
                               onClick={() => {
-                                this.props.removeTask(item.task_id);
+                                this.props.removeTask(item.task_id)
                               }}
                             />
                           </ListItemIcon>
@@ -119,8 +119,8 @@ class BeautifulDND extends Component {
           )}
         </Droppable>
       </DragDropContext>
-    );
+    )
   }
 }
 
-export default BeautifulDND;
+export default BeautifulDND

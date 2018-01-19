@@ -1,129 +1,130 @@
-import React from "react";
-import BeautifulDND from "./BeautifulDND";
-import enhanceWithClickOutside from "react-click-outside";
+import React from 'react'
+import BeautifulDND from './BeautifulDND'
+import enhanceWithClickOutside from 'react-click-outside'
 
-import { ListItem, ListItemText } from "material-ui/List";
-import { withStyles } from "material-ui/styles";
-import Paper from "material-ui/Paper";
+import { ListItem, ListItemText } from 'material-ui/List'
+import { withStyles } from 'material-ui/styles'
+import Paper from 'material-ui/Paper'
 
-import SimpleMenu from "./OptionsMenu";
-import Input from "material-ui/Input";
+import SimpleMenu from './OptionsMenu'
+import Input from 'material-ui/Input'
 
-import "./TodoList.css";
-import List from "material-ui/List/List";
+import './TodoList.css'
+import List from 'material-ui/List/List'
 
 const styles = theme => ({
   button: {
     margin: theme.spacing.unit
   },
   input: {
-    display: "none"
+    display: 'none'
   }
-});
+})
 
 class TodoList extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
-      title: "",
+      title: '',
       isEditing: false,
       menu: false,
-      text: ""
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.editListTitle = this.editListTitle.bind(this);
-    this.handleTitleChange = this.handleTitleChange.bind(this);
-    this.handleTitleSubmit = this.handleTitleSubmit.bind(this);
+      text: ''
+    }
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.editListTitle = this.editListTitle.bind(this)
+    this.handleTitleChange = this.handleTitleChange.bind(this)
+    this.handleTitleSubmit = this.handleTitleSubmit.bind(this)
   }
 
-  handleClickOutside() {
+  handleClickOutside () {
     this.setState({
       isEditing: false,
       menu: false
-    });
+    })
   }
 
-  handleChange(event) {
-    event.preventDefault();
-    const text = event.target.value;
+  handleChange (event) {
+    event.preventDefault()
+    const text = event.target.value
     this.setState({
       text
-    });
+    })
   }
 
-  handleSubmit(event) {
-    event.preventDefault();
-    this.props.addNewTask(this.props.id, this.state.text);
+  handleSubmit (event) {
+    event.preventDefault()
+    this.props.addNewTask(this.props.id, this.state.text)
     this.setState({
-      text: ""
-    });
+      text: ''
+    })
   }
 
-  editListTitle() {
+  editListTitle () {
     this.setState({
       isEditing: !this.state.isEditing
-    });
+    })
   }
 
-  handleTitleChange(event) {
-    event.preventDefault();
+  handleTitleChange (event) {
+    event.preventDefault()
     this.setState({
       title: event.target.value
-    });
+    })
   }
 
-  handleTitleSubmit(event) {
-    event.preventDefault();
-    this.props.editTitle(this.props.index, this.props.title, this.state.title);
+  handleTitleSubmit (event) {
+    event.preventDefault()
+    this.props.editTitle(this.props.index, this.props.title, this.state.title)
     this.setState({
       isEditing: !this.state.isEditing,
-      title: ""
-    });
+      title: ''
+    })
   }
 
-  render() {
-    const { todos, title } = this.props;
+  render () {
+    const { todos, title } = this.props
     return (
-      <div className="column" id="list">
+      <div className='column' id='list'>
         <Paper>
-          {this.state.isEditing ? (
-            <form onSubmit={this.handleTitleSubmit}>
+          {this.state.isEditing
+            ? <form onSubmit={this.handleTitleSubmit}>
               <input
-                type="text"
+                type='text'
                 value={this.state.title}
                 onChange={this.handleTitleChange}
                 placeholder={this.props.title}
-              />
+                />
             </form>
-          ) : (
-            <ListItem>
+            : <ListItem>
               <ListItemText primary={title} />
               <SimpleMenu
                 editListTitle={this.editListTitle}
                 removeList={this.props.removeList}
                 removeAllTasksFromList={() =>
-                  this.props.removeAllTasksFromList(this.props.id)
-                }
-              />
-            </ListItem>
-          )}
+                    this.props.removeAllTasksFromList(this.props.id)}
+                />
+            </ListItem>}
 
-          <div className="content">
-            <List style={{ marginLeft: "-30px", maxWidth: "125%" }}>
+          <div className='content'>
+            <List style={{ marginLeft: '-30px', maxWidth: '125%' }}>
               <BeautifulDND task={todos} removeTask={this.props.removeTask} />
             </List>
           </div>
         </Paper>
         <br />
-        <Paper style={{ textAlign: "center" }}>
+        <Paper>
           <br />
-          <form className="container-2" onSubmit={this.handleSubmit}>
+          <form
+            className='container-2'
+            onSubmit={this.handleSubmit}
+            style={{ marginLeft: '4%' }}
+          >
             <Input
-              label="Task"
-              placeholder="Add a task"
+              label='Task'
+              placeholder='Add a task'
               inputProps={{
-                "aria-label": "Description"
+                'aria-label': 'Description'
               }}
               value={this.state.text}
               onChange={this.handleChange}
@@ -142,8 +143,8 @@ class TodoList extends React.Component {
           <br />
         </Paper>
       </div>
-    );
+    )
   }
 }
 
-export default withStyles(styles)(enhanceWithClickOutside(TodoList));
+export default withStyles(styles)(enhanceWithClickOutside(TodoList))
