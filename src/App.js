@@ -8,6 +8,8 @@ import ButtonAppBar from './components/AppBar'
 import SimpleSnackbar from './components/Snackbar'
 import './App.css'
 
+import fire from './fire'
+
 class App extends Component {
   constructor () {
     super()
@@ -57,11 +59,26 @@ class App extends Component {
     this.removeAllTasksFromList = this.removeAllTasksFromList.bind(this)
   }
 
+  componentWillMount () {
+    let messagesRef = fire
+      .database()
+      .ref('messages')
+      .orderByKey()
+      .limitToLast(100)
+
+    messagesRef.on('child_added', snapshot => {
+      /* Update React state when message is added at Firebase Database */
+      let message = { text: snapshot.val(), id: snapshot.key }
+      this.setState({ messages: [message].concat(this.state.messages) })
+    })
+  }
+
   addList (title, id) {
     const lists = this.state.lists.concat({ title, id })
     this.setState({
       lists: lists
     })
+    fire.database().ref('lists').push({ title, id })
   }
 
   addNewTask (listId, text) {
@@ -69,6 +86,7 @@ class App extends Component {
     if (text.length > 0) {
       const todos = this.state.todos.concat({ listId, text, task_id })
       this.setState({ todos })
+      fire.database().ref('todos').push({ listId, text, task_id })
     }
   }
 
