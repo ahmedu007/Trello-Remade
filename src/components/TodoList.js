@@ -115,11 +115,7 @@ class TodoList extends React.Component {
         <br />
         <Paper>
           <br />
-          <form
-            className='container-2'
-            onSubmit={this.handleSubmit}
-            style={{ marginLeft: '4%' }}
-          >
+          <form onSubmit={this.handleSubmit} style={{ marginLeft: '4%' }}>
             <Input
               label='Task'
               placeholder='Add a task'
@@ -129,16 +125,6 @@ class TodoList extends React.Component {
               value={this.state.text}
               onChange={this.handleChange}
             />
-            {/* <span className="icon" style={{ marginLeft: "5%" }}>
-            <i className="fa fa-plus fa-2x" />
-            </span>
-            <input
-            type="text"
-            id="search"
-            placeholder="Add a task"
-            value={this.state.text}
-            onChange={this.handleChange}
-          /> */}
           </form>
           <br />
         </Paper>
