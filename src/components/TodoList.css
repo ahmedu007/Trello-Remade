@@ -1,4 +1,4 @@
-.box {
+/* .box {
   margin: 100px auto;
   width: 300px;
   height: 300px;
@@ -37,12 +37,10 @@
 }
 
 .container-2 input#search:-moz-placeholder {
-  /* Firefox 18- */
   color: #65737e;
 }
 
 .container-2 input#search::-moz-placeholder {
-  /* Firefox 19+ */
   color: #65737e;
 }
 
@@ -71,7 +69,8 @@
 
 .container-2:hover .icon {
   color: #93a2ad;
-}
+} */
+
 
 @media screen and (min-width: 1000px) {
   #list {

@@ -1,15 +1,15 @@
-import React from "react";
-import shortid from "shortid";
-import Save from "material-ui-icons/Save";
-import Paper from "material-ui/Paper";
-import { withStyles } from "material-ui/styles";
-import TextField from "material-ui/TextField";
-import Button from "material-ui/Button";
+import React from 'react'
+import shortid from 'shortid'
+import Save from 'material-ui-icons/Save'
+import Paper from 'material-ui/Paper'
+import { withStyles } from 'material-ui/styles'
+import TextField from 'material-ui/TextField'
+import Button from 'material-ui/Button'
 
 const styles = theme => ({
   container: {
-    display: "flex",
-    flexWrap: "wrap"
+    display: 'flex',
+    flexWrap: 'wrap'
   },
   textField: {
     marginLeft: theme.spacing.unit,
@@ -28,66 +28,66 @@ const styles = theme => ({
   rightIcon: {
     marginLeft: theme.spacing.unit
   }
-});
+})
 
 class AddList extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
-      title: ""
-    };
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+      title: ''
+    }
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
 
-  handleSubmit(event) {
-    event.preventDefault();
-    const id = shortid.generate();
-    const title = this.state.title;
-    this.props.addList(title, id);
+  handleSubmit (event) {
+    event.preventDefault()
+    const id = shortid.generate()
+    const title = this.state.title
+    this.props.addList(title, id)
     this.setState({
-      title: ""
-    });
+      title: ''
+    })
   }
 
-  handleChange(event) {
-    event.preventDefault();
-    const title = event.target.value;
+  handleChange (event) {
+    event.preventDefault()
+    const title = event.target.value
     this.setState({
       title
-    });
+    })
   }
 
-  render() {
-    const { classes } = this.props;
+  render () {
+    const { classes } = this.props
 
     return (
-      <Paper id="list" style={{ marginTop: "0.8%", height: "10%" }}>
-        <div className="column">
+      <div className='column' id='list'>
+        <Paper>
           <form
             onSubmit={this.handleSubmit}
             className={classes.container}
-            autoComplete="off"
+            autoComplete='off'
           >
             <TextField
-              id="with-placeholder"
+              id='with-placeholder'
               required
-              label="Add a new List"
-              placeholder="Title"
+              label='Add a new List'
+              placeholder='Title'
               className={classes.textField}
-              margin="normal"
+              margin='normal'
               onChange={this.handleChange}
               value={this.state.title}
             />
-            <Button className={classes.button} raised type="submit">
+            <Button className={classes.button} raised type='submit'>
               <Save className={classes.leftIcon} />
               Save
             </Button>
           </form>
-        </div>
-      </Paper>
-    );
+        </Paper>
+      </div>
+    )
   }
 }
 
-export default withStyles(styles)(AddList);
+export default withStyles(styles)(AddList)
