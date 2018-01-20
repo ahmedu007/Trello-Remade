@@ -79,17 +79,22 @@ class BeautifulDND extends Component {
               ref={provided.innerRef}
               style={getListStyle(snapshot.isDraggingOver)}
             >
-              {this.state.items.map(item => (
-                <Draggable key={item.task_id} draggableId={item.task_id}>
+              {this.state.items.map((item, index) => (
+                <Draggable
+                  key={item.task_id}
+                  draggableId={item.task_id}
+                  index={index}
+                >
                   {(provided, snapshot) => (
                     <div>
                       <div
                         ref={provided.innerRef}
+                        {...provided.draggableProps}
+                        {...provided.dragHandleProps}
                         style={getItemStyle(
-                          provided.draggableStyle,
+                          provided.draggableProps.style,
                           snapshot.isDragging
                         )}
-                        {...provided.dragHandleProps}
                       >
                         <ListItem
                           button
