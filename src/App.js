@@ -99,6 +99,7 @@ class App extends Component {
         message: 'Task successfully removed'
       }
     })
+    fire.database().ref('todos').remove(({ task_id }) => task_id === id)
   }
 
   removeAllTasksFromList (id) {
