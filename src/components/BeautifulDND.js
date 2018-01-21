@@ -17,7 +17,7 @@ const getItemStyle = (draggableStyle, isDragging) => ({
   padding: grid * 2,
   margin: `0 0 ${grid}px 0`,
 
-  background: isDragging ? '#5DBCD2' : 'lightgrey',
+  background: isDragging ? '#3f51b5' : 'lightgrey',
 
   ...draggableStyle
 })

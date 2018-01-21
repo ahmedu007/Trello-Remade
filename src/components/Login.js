@@ -1,8 +1,17 @@
 import React, { Component } from 'react'
 import './Login.css'
 import Button from 'material-ui/Button'
+import Checkbox from 'material-ui/Checkbox'
+import Paper from 'material-ui/Paper'
+import Typography from 'material-ui/Typography'
 
 class Login extends Component {
+  constructor () {
+    super()
+    this.state = {
+      checked: false
+    }
+  }
   render () {
     return (
       <div className='background'>
@@ -32,10 +41,11 @@ class Login extends Component {
                     <div className='field'>
                       <div className='control'>
                         <input
-                          className='input is-large'
+                          className='input '
                           type='email'
                           placeholder='Your Email'
                           autoFocus=''
+                          style={{ height: '50px' }}
                         />
                       </div>
                     </div>
@@ -43,18 +53,26 @@ class Login extends Component {
                     <div className='field'>
                       <div className='control'>
                         <input
-                          className='input is-large'
+                          className='input'
                           type='password'
                           placeholder='Your Password'
+                          style={{ height: '50px' }}
                         />
                       </div>
                     </div>
-                    <div className='field'>
-                      <label className='checkbox'>
-                        <input type='checkbox' />
+                    <Paper>
+                      <Checkbox
+                        checked={this.state.checked}
+                        tabIndex={-1}
+                        disableRipple
+                        onClick={() => {
+                          this.setState({ checked: !this.state.checked })
+                        }}
+                      />
+                      <Typography component='span'>
                         Remember me
-                      </label>
-                    </div>
+                      </Typography>
+                    </Paper>
                     <Button
                       raised
                       color='primary'
