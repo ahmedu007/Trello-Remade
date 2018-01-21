@@ -22,7 +22,7 @@ const styles = theme => ({
 })
 
 class TodoList extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
       title: '',
@@ -37,14 +37,14 @@ class TodoList extends React.Component {
     this.handleTitleSubmit = this.handleTitleSubmit.bind(this)
   }
 
-  handleClickOutside () {
+  handleClickOutside() {
     this.setState({
       isEditing: false,
       menu: false
     })
   }
 
-  handleChange (event) {
+  handleChange(event) {
     event.preventDefault()
     const text = event.target.value
     this.setState({
@@ -52,7 +52,7 @@ class TodoList extends React.Component {
     })
   }
 
-  handleSubmit (event) {
+  handleSubmit(event) {
     event.preventDefault()
     this.props.addNewTask(this.props.id, this.state.text)
     this.setState({
@@ -60,20 +60,20 @@ class TodoList extends React.Component {
     })
   }
 
-  editListTitle () {
+  editListTitle() {
     this.setState({
       isEditing: !this.state.isEditing
     })
   }
 
-  handleTitleChange (event) {
+  handleTitleChange(event) {
     event.preventDefault()
     this.setState({
       title: event.target.value
     })
   }
 
-  handleTitleSubmit (event) {
+  handleTitleSubmit(event) {
     event.preventDefault()
     this.props.editTitle(this.props.index, this.props.title, this.state.title)
     this.setState({
@@ -82,10 +82,10 @@ class TodoList extends React.Component {
     })
   }
 
-  render () {
+  render() {
     const { todos, title } = this.props
     return (
-      <div className='column' id='list'>
+      <div className='column is-one-third' id='list'>
         <Paper>
           {this.state.isEditing
             ? <form onSubmit={this.handleTitleSubmit}>
@@ -99,7 +99,7 @@ class TodoList extends React.Component {
                   value={this.state.title}
                   onChange={this.handleTitleChange}
                   placeholder={this.props.title}
-                  />
+                />
               </div>
             </form>
             : <ListItem>
@@ -108,8 +108,8 @@ class TodoList extends React.Component {
                 editListTitle={this.editListTitle}
                 removeList={this.props.removeList}
                 removeAllTasksFromList={() =>
-                    this.props.removeAllTasksFromList(this.props.id)}
-                />
+                  this.props.removeAllTasksFromList(this.props.id)}
+              />
             </ListItem>}
 
           <div className='content'>
