@@ -3,6 +3,7 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import { ListItem, ListItemIcon, ListItemText } from 'material-ui/List'
 import DeleteIcon from 'material-ui-icons/Delete'
 import Divider from 'material-ui/Divider';
+import Fade from 'material-ui/transitions/Fade';
 
 const reorder = (list, startIndex, endIndex) => {
   const result = Array.from(list)
@@ -81,44 +82,46 @@ class BeautifulDND extends Component {
               style={getListStyle(snapshot.isDraggingOver)}
             >
               {this.state.items.map((item, index) => (
-                <Draggable
-                  key={item.task_id}
-                  draggableId={item.task_id}
-                  index={index}
-                >
-                  {(provided, snapshot) => (
-                    <div>
-                      <div
-                        ref={provided.innerRef}
-                        {...provided.draggableProps}
-                        {...provided.dragHandleProps}
-                        style={getItemStyle(
-                          provided.draggableProps.style,
-                          snapshot.isDragging
-                        )}
-                      >
-                        <ListItem
-                          button
-                          style={{ fontSize: '0.70em', maxHeight: '10px' }}
+                <Fade key={item.task_id} in timeout={{ enter: 500 }}>
+                  <Draggable
+                    key={item.task_id}
+                    draggableId={item.task_id}
+                    index={index}
+                  >
+                    {(provided, snapshot) => (
+                      <div>
+                        <div
+                          ref={provided.innerRef}
+                          {...provided.draggableProps}
+                          {...provided.dragHandleProps}
+                          style={getItemStyle(
+                            provided.draggableProps.style,
+                            snapshot.isDragging
+                          )}
                         >
-                          <ListItemText
-                            primary={item.text}
-                            style={{ marginTop: '7%' }}
-                          />
-                          <ListItemIcon>
-                            <DeleteIcon
-                              onClick={() => {
-                                this.props.removeTask(item.task_id)
-                              }}
+                          <ListItem
+                            button
+                            style={{ fontSize: '0.70em', maxHeight: '10px' }}
+                          >
+                            <ListItemText
+                              primary={item.text}
+                              style={{ marginTop: '7%' }}
                             />
-                          </ListItemIcon>
-                        </ListItem>
+                            <ListItemIcon>
+                              <DeleteIcon
+                                onClick={() => {
+                                  this.props.removeTask(item.task_id)
+                                }}
+                              />
+                            </ListItemIcon>
+                          </ListItem>
+                        </div>
+                        {provided.placeholder}
+                        <Divider />
                       </div>
-                      {provided.placeholder}
-                      <Divider />
-                    </div>
-                  )}
-                </Draggable>
+                    )}
+                  </Draggable>
+                </Fade>
               ))}
 
               {provided.placeholder}
