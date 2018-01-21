@@ -1,17 +1,18 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
+import './Login.css'
 
 class Login extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-  render() {
+  render () {
     return (
-      <div>
-        <p>Hello World</p>
+      <div className='background'>
+        <div className='container'>
+          <div className='box'>
+            <input type='text' />
+          </div>
+        </div>
       </div>
-    );
+    )
   }
 }
 
-export default Login;
+export default Login
