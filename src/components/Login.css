@@ -1,0 +1,10 @@
+
+.background {
+    width: 100%;
+    height: 93vh;
+    background-size: cover;
+    background-image: url('./images/pexels-photo-46277.jpeg');
+    background-position: center;
+    background-repeat: no-repeat;   
+}
+
