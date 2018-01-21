@@ -30,7 +30,7 @@ class SimpleMenu extends React.Component {
     this.setState({ open: false })
   }
 
-  render () {
+  render() {
     return (
       <div>
         <ListItemIcon>
@@ -59,10 +59,25 @@ class SimpleMenu extends React.Component {
               open={this.state.warning}
               removeList={this.handleDeleteList}
               disagree={this.handleClose}
+              messages={{
+                title: 'Delete Entire List?',
+                body: 'You are about to Delete the List with all its contents. Are you sure you want to proceed? This action is irreversible.'
+              }}
             />
           </MenuItem>
-          <MenuItem onClick={this.handleDeleteTasks}>
+          <MenuItem
+            onClick={() => this.setState({ warning: !this.state.warning })}
+          >
             Remove all cards from the List
+            <WarningDiag
+              open={this.state.warning}
+              removeList={this.handleDeleteTasks}
+              disagree={this.handleClose}
+              messages={{
+                title: 'Remove all tasks?',
+                body: 'You are about to remove all the contents of this list. Are you sure you want to proceed? This action is irreversible.'
+              }}
+            />
           </MenuItem>
         </Menu>
       </div>

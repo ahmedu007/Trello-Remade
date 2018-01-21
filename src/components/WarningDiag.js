@@ -7,16 +7,13 @@ import Dialog, {
   DialogTitle
 } from 'material-ui/Dialog'
 import Slide from 'material-ui/transitions/Slide'
-import NoSSR from './helpers/NoSSR' // Temporary workaround for SSR Portal issue.
+import NoSSR from './helpers/NoSSR'
 
-function Transition (props) {
+function Transition(props) {
   return <Slide direction='up' {...props} />
 }
 
 class WarningDiag extends React.Component {
-  state = {
-    open: false
-  }
 
   handleClickOpen = () => {
     this.setState({ open: true })
@@ -26,7 +23,8 @@ class WarningDiag extends React.Component {
     this.setState({ open: false })
   }
 
-  render () {
+  render() {
+    console.log(this.props.messages.title)
     return (
       <div>
         <NoSSR>
@@ -39,12 +37,11 @@ class WarningDiag extends React.Component {
             aria-describedby='alert-dialog-slide-description'
           >
             <DialogTitle id='alert-dialog-slide-title'>
-              {'Delete Entire List?'}
+              {this.props.messages.title}
             </DialogTitle>
             <DialogContent>
               <DialogContentText id='alert-dialog-slide-description'>
-                You are about to Delete the List with all its contents. Are you
-                sure you want to proceed? This action is irreversible.
+                {this.props.messages.body}
               </DialogContentText>
             </DialogContent>
             <DialogActions>
