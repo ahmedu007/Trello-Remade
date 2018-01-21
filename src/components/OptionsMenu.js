@@ -1,67 +1,73 @@
-import React from "react";
-import Menu, { MenuItem } from "material-ui/Menu";
-import { ListItemIcon } from "material-ui/List";
-import IconButton from "material-ui/IconButton";
-import MoreVertIcon from "material-ui-icons/MoreVert";
-import WarningDiag from "./WarningDiag";
+import React from 'react'
+import Menu, { MenuItem } from 'material-ui/Menu'
+import { ListItemIcon } from 'material-ui/List'
+import IconButton from 'material-ui/IconButton'
+import MoreVertIcon from 'material-ui-icons/MoreVert'
+import WarningDiag from './WarningDiag'
 
 class SimpleMenu extends React.Component {
   state = {
     anchorEl: null,
-    open: false
-  };
+    open: false,
+    warning: false
+  }
 
   handleClick = event => {
-    this.setState({ open: true, anchorEl: event.currentTarget });
-  };
+    this.setState({ open: true, anchorEl: event.currentTarget })
+  }
 
   handleClose = () => {
-    this.setState({ open: false });
-  };
+    this.setState({ open: false, warning: false })
+  }
 
   handleDeleteList = () => {
-    this.props.removeList();
-    this.setState({ open: false });
-  };
+    this.props.removeList()
+    this.setState({ open: false })
+  }
 
   handleDeleteTasks = () => {
-    this.props.removeAllTasksFromList();
-    this.setState({ open: false });
-  };
+    this.props.removeAllTasksFromList()
+    this.setState({ open: false })
+  }
 
-  render() {
+  render () {
     return (
       <div>
         <ListItemIcon>
           <IconButton
-            aria-owns={this.state.open ? "simple-menu" : null}
-            aria-haspopup="true"
+            aria-owns={this.state.open ? 'simple-menu' : null}
+            aria-haspopup='true'
             onClick={this.handleClick}
-            style={{ marginRight: "1%" }}
+            style={{ marginRight: '1%' }}
           >
             <MoreVertIcon />
           </IconButton>
         </ListItemIcon>
         <Menu
-          id="simple-menu"
+          id='simple-menu'
           anchorEl={this.state.anchorEl}
           open={this.state.open}
           onClose={this.handleClose}
         >
           <MenuItem onClick={this.props.editListTitle}>Edit Title</MenuItem>
-          <MenuItem>
+          <MenuItem
+            onClick={() => this.setState({ warning: !this.state.warning })}
+            style={{ color: 'red' }}
+          >
+            Delete List
             <WarningDiag
+              open={this.state.warning}
               removeList={this.handleDeleteList}
               disagree={this.handleClose}
             />
           </MenuItem>
           <MenuItem onClick={this.handleDeleteTasks}>
-            Archive all cards in the List
+            Remove all cards from the List
           </MenuItem>
         </Menu>
       </div>
-    );
+    )
   }
 }
 
-export default SimpleMenu;
+export default SimpleMenu
