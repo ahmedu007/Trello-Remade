@@ -4,7 +4,6 @@ import shortid from 'shortid'
 import TodoList from './components/TodoList'
 import AddList from './components/AddList'
 
-import ButtonAppBar from './components/AppBar'
 import SimpleSnackbar from './components/Snackbar'
 import './App.css'
 
@@ -150,7 +149,6 @@ class App extends Component {
   render () {
     return (
       <div style={{ paddingRight: '19px' }}>
-        <ButtonAppBar />
         <div className='container' style={{ paddingRight: 'auto' }}>
           <br />
           <br />

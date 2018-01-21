@@ -6,7 +6,10 @@ class Login extends Component {
     return (
       <div className='background'>
         <div className='container'>
-          <div className='box'>
+          <div
+            className='box'
+            style={{ background: 'rgba(0, 0, 0, 0.5)', height: '90vh' }}
+          >
             <input type='text' />
           </div>
         </div>
