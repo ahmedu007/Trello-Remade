@@ -6,6 +6,7 @@ import Toolbar from 'material-ui/Toolbar'
 import Typography from 'material-ui/Typography'
 import Button from 'material-ui/Button'
 import DrawersMenu from './DrawersMenu'
+import { NavLink } from 'react-router-dom'
 
 const styles = {
   root: {
@@ -26,10 +27,19 @@ function ButtonAppBar (props) {
     <AppBar style={{ textAlign: 'center' }}>
       <Toolbar>
         <DrawersMenu />
-        <Typography type='title' color='inherit' className={classes.flex}>
+        <Typography
+          type='title'
+          color='inherit'
+          className={classes.flex}
+          style={{ fontFamily: 'Ubuntu' }}
+        >
           Welcome to Custom Trello Board
         </Typography>
-        <Button color='contrast'>Login</Button>
+        <NavLink to='/login'>
+          <Button color='contrast'>
+            Login
+          </Button>
+        </NavLink>
       </Toolbar>
     </AppBar>
   )

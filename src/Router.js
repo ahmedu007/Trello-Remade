@@ -8,15 +8,15 @@ import ButtonAppBar from './components/AppBar'
 class Router extends React.Component {
   render () {
     return (
-      <div>
-        <ButtonAppBar />
-        <BrowserRouter>
+      <BrowserRouter>
+        <div>
+          <ButtonAppBar />
           <Switch>
             <Route exact path='/' component={App} />
             <Route path='/login' component={Login} />
           </Switch>
-        </BrowserRouter>
-      </div>
+        </div>
+      </BrowserRouter>
     )
   }
 }
