@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import { ListItem, ListItemIcon, ListItemText } from 'material-ui/List'
 import DeleteIcon from 'material-ui-icons/Delete'
+import Divider from 'material-ui/Divider';
 
 const reorder = (list, startIndex, endIndex) => {
   const result = Array.from(list)
@@ -29,7 +30,7 @@ const getListStyle = isDraggingOver => ({
 })
 
 class BeautifulDND extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
       items: this.props.task
@@ -38,19 +39,19 @@ class BeautifulDND extends Component {
     this.handleClick = this.handleClick.bind(this)
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.setState({
       items: this.props.task
     })
   }
 
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps(nextProps) {
     if (this.props.task.length !== nextProps.task.length) {
       this.setState({ items: nextProps.task })
     }
   }
 
-  onDragEnd (result) {
+  onDragEnd(result) {
     if (!result.destination) {
       return
     }
@@ -70,7 +71,7 @@ class BeautifulDND extends Component {
     this.props.removeTask(this.props.task.task_id)
   }
 
-  render () {
+  render() {
     return (
       <DragDropContext onDragEnd={this.onDragEnd}>
         <Droppable droppableId='droppable'>
@@ -114,6 +115,7 @@ class BeautifulDND extends Component {
                         </ListItem>
                       </div>
                       {provided.placeholder}
+                      <Divider />
                     </div>
                   )}
                 </Draggable>
