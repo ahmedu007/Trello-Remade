@@ -89,12 +89,18 @@ class TodoList extends React.Component {
         <Paper>
           {this.state.isEditing
             ? <form onSubmit={this.handleTitleSubmit}>
-              <input
-                type='text'
-                value={this.state.title}
-                onChange={this.handleTitleChange}
-                placeholder={this.props.title}
-                />
+              <div className='box'>
+                <Input
+                  label='Task'
+                  inputProps={{
+                    'aria-label': 'Description'
+                  }}
+                  type='text'
+                  value={this.state.title}
+                  onChange={this.handleTitleChange}
+                  placeholder={this.props.title}
+                  />
+              </div>
             </form>
             : <ListItem>
               <ListItemText primary={title} />
