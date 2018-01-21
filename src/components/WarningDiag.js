@@ -24,7 +24,6 @@ class WarningDiag extends React.Component {
   }
 
   render() {
-    console.log(this.props.messages.title)
     return (
       <div>
         <NoSSR>
