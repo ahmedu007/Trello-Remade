@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import './Login.css'
 import Button from 'material-ui/Button'
-import Checkbox from 'material-ui/Checkbox'
 import Paper from 'material-ui/Paper'
-import Typography from 'material-ui/Typography'
+import { ListItem, ListItemText } from 'material-ui/List'
+import Checkbox from 'material-ui/Checkbox'
 
 class Login extends Component {
   constructor () {
@@ -61,18 +61,29 @@ class Login extends Component {
                       </div>
                     </div>
                     <Paper>
-                      <Checkbox
-                        checked={this.state.checked}
-                        tabIndex={-1}
-                        disableRipple
+                      <ListItem
+                        dense
+                        button
                         onClick={() => {
                           this.setState({ checked: !this.state.checked })
                         }}
-                      />
-                      <Typography component='span'>
-                        Remember me
-                      </Typography>
+                        style={{ height: '50px' }}
+                      >
+                        <Checkbox
+                          checked={this.state.checked}
+                          tabIndex={-1}
+                          disableRipple
+                          onClick={() => {
+                            this.setState({ checked: !this.state.checked })
+                          }}
+                        />
+                        <ListItemText
+                          primary='Remember me'
+                          style={{ textAlign: 'left' }}
+                        />
+                      </ListItem>
                     </Paper>
+                    <br />
                     <Button
                       raised
                       color='primary'
