@@ -66,10 +66,10 @@ class SimpleMenu extends React.Component {
             Delete List
             <WarningDiag
               open={this.state.warning}
-              removeList={this.handleDeleteList}
+              handleDeleteList={this.handleDeleteList}
               disagree={this.handleClose}
               messages={this.state.messages}
-
+              handleDeleteTasks={this.handleDeleteTasks}
             />
           </MenuItem>
           <MenuItem
@@ -81,13 +81,6 @@ class SimpleMenu extends React.Component {
             })}
           >
             Remove all cards from the List
-            <WarningDiag
-              open={this.state.warning}
-              removeList={this.handleDeleteTasks}
-              disagree={this.handleClose}
-              messages={this.state.messages}
-
-            />
           </MenuItem>
         </Menu>
       </div>

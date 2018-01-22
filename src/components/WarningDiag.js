@@ -14,6 +14,14 @@ function Transition(props) {
 }
 
 class WarningDiag extends React.Component {
+
+  handleDelete(event) {
+    event.preventDefault()
+    if (this.props.messages.title === 'Remove all tasks?') {
+      this.props.handleDeleteTasks()
+    } else this.props.handleDeleteList()
+  }
+
   render() {
     return (
       <div>
@@ -38,7 +46,7 @@ class WarningDiag extends React.Component {
               <Button onClick={this.props.disagree} color='primary'>
                 Cancel
               </Button>
-              <Button onClick={this.props.removeList} color='primary'>
+              <Button onClick={this.handleDelete.bind(this)} color='primary'>
                 Okay
               </Button>
             </DialogActions>
