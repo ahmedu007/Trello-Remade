@@ -14,15 +14,6 @@ function Transition(props) {
 }
 
 class WarningDiag extends React.Component {
-
-  handleClickOpen = () => {
-    this.setState({ open: true })
-  }
-
-  handleClose = () => {
-    this.setState({ open: false })
-  }
-
   render() {
     return (
       <div>

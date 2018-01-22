@@ -9,7 +9,11 @@ class SimpleMenu extends React.Component {
   state = {
     anchorEl: null,
     open: false,
-    warning: false
+    warning: false,
+    messages: {
+      title: '',
+      body: ''
+    }
   }
 
   handleClick = event => {
@@ -51,7 +55,12 @@ class SimpleMenu extends React.Component {
         >
           <MenuItem onClick={this.props.editListTitle}>Edit Title</MenuItem>
           <MenuItem
-            onClick={() => this.setState({ warning: !this.state.warning })}
+            onClick={() => this.setState({
+              warning: !this.state.warning, messages: {
+                title: 'Delete Entire List?',
+                body: 'You are about to Delete the List with all its contents. Are you sure you want to proceed? This action is irreversible.'
+              }
+            })}
             style={{ color: 'red' }}
           >
             Delete List
@@ -59,24 +68,25 @@ class SimpleMenu extends React.Component {
               open={this.state.warning}
               removeList={this.handleDeleteList}
               disagree={this.handleClose}
-              messages={{
-                title: 'Delete Entire List?',
-                body: 'You are about to Delete the List with all its contents. Are you sure you want to proceed? This action is irreversible.'
-              }}
+              messages={this.state.messages}
+
             />
           </MenuItem>
           <MenuItem
-            onClick={() => this.setState({ warning: !this.state.warning })}
+            onClick={() => this.setState({
+              warning: !this.state.warning, messages: {
+                title: 'Remove all tasks?',
+                body: 'You are about to remove all the contents of this list. Are you sure you want to proceed? This action is irreversible.'
+              }
+            })}
           >
             Remove all cards from the List
             <WarningDiag
               open={this.state.warning}
               removeList={this.handleDeleteTasks}
               disagree={this.handleClose}
-              messages={{
-                title: 'Remove all tasks?',
-                body: 'You are about to remove all the contents of this list. Are you sure you want to proceed? This action is irreversible.'
-              }}
+              messages={this.state.messages}
+
             />
           </MenuItem>
         </Menu>
