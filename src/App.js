@@ -8,9 +8,10 @@ import SimpleSnackbar from './components/Snackbar'
 import './App.css'
 
 import fire from './fire'
+import Fade from 'material-ui/transitions/Fade';
 
 class App extends Component {
-  constructor () {
+  constructor() {
     super()
     this.state = {
       lists: [
@@ -58,7 +59,7 @@ class App extends Component {
     this.removeAllTasksFromList = this.removeAllTasksFromList.bind(this)
   }
 
-  componentWillMount () {
+  componentWillMount() {
     let messagesRef = fire
       .database()
       .ref('messages')
@@ -72,7 +73,7 @@ class App extends Component {
     })
   }
 
-  addList (title, id) {
+  addList(title, id) {
     const lists = this.state.lists.concat({ title, id })
     this.setState({
       lists: lists
@@ -80,7 +81,7 @@ class App extends Component {
     fire.database().ref('lists').push({ title, id })
   }
 
-  addNewTask (listId, text) {
+  addNewTask(listId, text) {
     const task_id = shortid.generate()
     if (text.length > 0) {
       const todos = this.state.todos.concat({ listId, text, task_id })
@@ -89,7 +90,7 @@ class App extends Component {
     }
   }
 
-  removeTask (id) {
+  removeTask(id) {
     const todos = this.state.todos.filter(({ task_id }) => task_id !== id)
     this.setState({
       todos,
@@ -101,7 +102,7 @@ class App extends Component {
     fire.database().ref('todos').remove(({ task_id }) => task_id === id)
   }
 
-  removeAllTasksFromList (id) {
+  removeAllTasksFromList(id) {
     const todos = this.state.todos.filter(({ listId }) => listId !== id)
     this.setState({
       todos,
@@ -113,7 +114,7 @@ class App extends Component {
     fire.database().ref('todos').remove(({ listId }) => listId === id)
   }
 
-  removeList (i) {
+  removeList(i) {
     const prevLists = this.state.lists.slice()
     const firstHalf = prevLists.slice(0, i)
     const secHalf = prevLists.slice(i + 1)
@@ -126,7 +127,7 @@ class App extends Component {
     })
   }
 
-  editTitle (i, oldTitle, newTitle) {
+  editTitle(i, oldTitle, newTitle) {
     const lists = this.state.lists.slice()
     lists[i].title = newTitle
     this.setState({
@@ -146,7 +147,7 @@ class App extends Component {
     this.setState({ snackbar: false })
   }
 
-  render () {
+  render() {
     return (
       <div style={{ paddingRight: '19px' }}>
         <div className='container' style={{ paddingRight: 'auto' }}>
@@ -158,22 +159,23 @@ class App extends Component {
           <div className='columns'>
             {this.state.lists.map((list, i) => {
               return (
-                <TodoList
-                  key={i}
-                  index={i}
-                  addNewTask={this.addNewTask}
-                  removeTask={this.removeTask}
-                  removeList={() => {
-                    this.removeList(i)
-                  }}
-                  removeAllTasksFromList={this.removeAllTasksFromList}
-                  editTitle={this.editTitle}
-                  id={list.id}
-                  title={list.title}
-                  todos={this.state.todos.filter(
-                    ({ listId }) => listId === list.id
-                  )}
-                />
+                <Fade key={i} in timeout={{ enter: 700 }}>
+                  <TodoList
+                    index={i}
+                    addNewTask={this.addNewTask}
+                    removeTask={this.removeTask}
+                    removeList={() => {
+                      this.removeList(i)
+                    }}
+                    removeAllTasksFromList={this.removeAllTasksFromList}
+                    editTitle={this.editTitle}
+                    id={list.id}
+                    title={list.title}
+                    todos={this.state.todos.filter(
+                      ({ listId }) => listId === list.id
+                    )}
+                  />
+                </Fade>
               )
             })}
             <SimpleSnackbar
