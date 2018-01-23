@@ -1,8 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Ubuntu');
-
-* {
-  box-sizing: border-box;
-}
+@import url("https://fonts.googleapis.com/css?family=Ubuntu");
 
 body {
   overflow-x: scroll;
@@ -17,36 +13,6 @@ body {
   /* font-family: "Roboto";
   width: 600px;
   display: block; */
-}
-
-
-/* ANIMATIONS ================ */
-@-webkit-keyframes inputHighlighter {
-  from {
-    background: #5264ae;
-  }
-  to {
-    width: 0;
-    background: transparent;
-  }
-}
-@-moz-keyframes inputHighlighter {
-  from {
-    background: #5264ae;
-  }
-  to {
-    width: 0;
-    background: transparent;
-  }
-}
-@keyframes inputHighlighter {
-  from {
-    background: #5264ae;
-  }
-  to {
-    width: 0;
-    background: transparent;
-  }
 }
 
 @media screen and (max-width: 320px) {
