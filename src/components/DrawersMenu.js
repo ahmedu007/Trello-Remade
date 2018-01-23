@@ -1,15 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "material-ui/styles";
-import Drawer from "material-ui/Drawer";
 import List, { ListItem, ListItemIcon, ListItemText } from "material-ui/List";
-import Divider from "material-ui/Divider";
-import IconButton from "material-ui/IconButton";
+import { Divider, IconButton, Drawer } from "material-ui/";
 import MenuIcon from "material-ui-icons/Menu";
 import InboxIcon from "material-ui-icons/Inbox";
 import DraftsIcon from "material-ui-icons/Drafts";
-import { NavLink } from 'react-router-dom'
 import Repeat from "material-ui-icons/Repeat";
+import { NavLink } from 'react-router-dom'
+
 
 
 const styles = {

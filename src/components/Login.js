@@ -1,18 +1,16 @@
 import React, { Component } from 'react'
 import './Login.css'
-import Button from 'material-ui/Button'
-import Paper from 'material-ui/Paper'
+import { Button, Checkbox, Paper } from 'material-ui/'
 import { ListItem, ListItemText } from 'material-ui/List'
-import Checkbox from 'material-ui/Checkbox'
 
 class Login extends Component {
-  constructor () {
+  constructor() {
     super()
     this.state = {
       checked: false
     }
   }
-  render () {
+  render() {
     return (
       <div className='background'>
         <div className='container' style={{ marginTop: '3%' }}>

@@ -1,10 +1,8 @@
 import React from 'react'
 import shortid from 'shortid'
 import Save from 'material-ui-icons/Save'
-import Paper from 'material-ui/Paper'
+import { Paper, Button, TextField } from 'material-ui/'
 import { withStyles } from 'material-ui/styles'
-import TextField from 'material-ui/TextField'
-import Button from 'material-ui/Button'
 
 const styles = theme => ({
   container: {
@@ -31,7 +29,7 @@ const styles = theme => ({
 })
 
 class AddList extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
       title: ''
@@ -40,7 +38,7 @@ class AddList extends React.Component {
     this.handleChange = this.handleChange.bind(this)
   }
 
-  handleSubmit (event) {
+  handleSubmit(event) {
     event.preventDefault()
     const id = shortid.generate()
     const title = this.state.title
@@ -50,7 +48,7 @@ class AddList extends React.Component {
     })
   }
 
-  handleChange (event) {
+  handleChange(event) {
     event.preventDefault()
     const title = event.target.value
     this.setState({
@@ -58,7 +56,7 @@ class AddList extends React.Component {
     })
   }
 
-  render () {
+  render() {
     const { classes } = this.props
 
     return (

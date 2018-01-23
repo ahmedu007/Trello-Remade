@@ -2,15 +2,12 @@ import React from 'react'
 import BeautifulDND from './BeautifulDND'
 import enhanceWithClickOutside from 'react-click-outside'
 
-import { ListItem, ListItemText } from 'material-ui/List'
+import List, { ListItem, ListItemText } from 'material-ui/List'
 import { withStyles } from 'material-ui/styles'
-import Paper from 'material-ui/Paper'
+import { Paper, Input } from 'material-ui/'
 
 import SimpleMenu from './OptionsMenu'
-import Input from 'material-ui/Input'
-
 import './TodoList.css'
-import List from 'material-ui/List/List'
 
 const styles = theme => ({
   button: {
