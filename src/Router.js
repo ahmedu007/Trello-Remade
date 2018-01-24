@@ -1,10 +1,10 @@
-import React from 'react'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import React from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
-import App from './App'
-import Boards from './Boards';
-import Login from './components/Login'
-import ButtonAppBar from './components/AppBar'
+import App from "./App";
+import Boards from "./Boards";
+import Login from "./components/Login";
+import ButtonAppBar from "./components/AppBar";
 
 class Router extends React.Component {
   render() {
@@ -13,14 +13,14 @@ class Router extends React.Component {
         <div>
           <ButtonAppBar />
           <Switch>
-            <Route exact path='/' component={App} />
-            <Route path='/login' component={Login} />
-            <Route path='/boards' component={Boards} />
+            <Route path="/app" component={App} />
+            <Route path="/login" component={Login} />
+            <Route exact path="/" component={Boards} />
           </Switch>
         </div>
       </BrowserRouter>
-    )
+    );
   }
 }
 
-export default Router
+export default Router;
