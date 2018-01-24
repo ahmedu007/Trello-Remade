@@ -55,7 +55,7 @@ class Boards extends Component {
               </NavLink>
             </div>
             {this.state.boards.map((board, i) => (
-              <Grow in timeout={{ enter: 3000 }} key={i}>
+              <Grow in timeout={{ enter: 1500 }} key={i}>
                 <div className="column is-one-quarter">
                   <div
                     className="box"
