@@ -5,11 +5,10 @@ import List, { ListItem, ListItemIcon, ListItemText } from "material-ui/List";
 import { Divider, IconButton, Drawer } from "material-ui/";
 import MenuIcon from "material-ui-icons/Menu";
 import InboxIcon from "material-ui-icons/Inbox";
+import { ArrowBack } from "material-ui-icons/";
 import DraftsIcon from "material-ui-icons/Drafts";
 import Repeat from "material-ui-icons/Repeat";
-import { NavLink } from 'react-router-dom'
-
-
+import { NavLink } from "react-router-dom";
 
 const styles = {
   list: {
@@ -39,9 +38,21 @@ class DrawersMenu extends React.Component {
 
     const sideList = (
       <div className={classes.list}>
-        <List style={{ textAlign: 'center' }}><strong>Recent Boards</strong></List>
         <List>
-          <NavLink to='/'>
+          <NavLink to="/">
+            <ListItem button>
+              <ListItemIcon>
+                <ArrowBack />
+              </ListItemIcon>
+              <ListItemText primary="Back to all boards" />
+            </ListItem>
+          </NavLink>
+        </List>
+        <List style={{ textAlign: "center" }}>
+          <strong>Recent Boards</strong>
+        </List>
+        <List>
+          <NavLink to="/app">
             <ListItem button>
               <ListItemIcon>
                 <Repeat />
