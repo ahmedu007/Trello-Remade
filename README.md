@@ -1,8 +1,12 @@
 # Trello Remade
 
-My take on making a trello like clone, that feature Drag and Drop for tasks. Still in production, so keep an eye out to see how it looks.
+My take on making a trello like clone, that feature Drag and Drop for tasks.
 
 If you wanna have a peek at what's inside, here is the [Link](https://customtrello.firebaseapp.com/)
+
+```
+https://customtrello.firebaseapp.com/
+```
 
 ## Installation Instructions
 
@@ -21,18 +25,18 @@ git clone https://github.com/ahmedu007/Trello-Remade
    you will need version 8.x or above to run this properly.
 
 3. Install all dependencies:
+
    ```
    $ npm install
    ```
+
 4. To serve the code, run
+
    ```
    $ npm start
    ```
-   this will navigate to your localhost:3000 on your defaul browser.
-5. Run the tests;
-   ```
-   $ npm test
-   ```
+
+   this will navigate to your localhost:3000 on your default browser.
 
 ## Technologies Used
 
