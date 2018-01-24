@@ -1,16 +1,12 @@
 import React, { Component } from "react";
 import shortid from "shortid";
+import { NavLink } from "react-router-dom";
 
 class Boards extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      boards: [
-        {
-          board_id: shortid.generate(),
-          title: "Welcome Board"
-        }
-      ],
+      boards: [],
       newTitle: ""
     };
   }
@@ -47,6 +43,11 @@ class Boards extends Component {
         <br />
         <div className="box">
           <div className="columns" style={{ textAlign: "center" }}>
+            <div className="column is-one-quarter">
+              <NavLink to="/app">
+                <div className="box">Welcome Board</div>
+              </NavLink>
+            </div>
             {this.state.boards.map((board, i) => (
               <div className="column is-one-quarter" key={i}>
                 <div className="box">{board.title}</div>
@@ -56,6 +57,7 @@ class Boards extends Component {
               <form onSubmit={this.handleSubmit.bind(this)}>
                 <input
                   type="text"
+                  placeholder="Create new board"
                   onChange={this.handleChange.bind(this)}
                   value={this.state.newTitle}
                 />
