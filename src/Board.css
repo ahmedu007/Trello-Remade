@@ -1,0 +1,6 @@
+#board_card {
+  background-image: url(./components/images/prez.jpg);
+  background-size: cover;
+  color: aliceblue;
+  font-weight: bolder;
+}
