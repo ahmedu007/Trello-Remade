@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import shortid from "shortid";
 import { NavLink } from "react-router-dom";
+import { TextField } from "material-ui/";
+import { Grow } from "material-ui/transitions/";
 import "./Board.css";
 
 class Boards extends Component {
@@ -8,7 +10,8 @@ class Boards extends Component {
     super(props);
     this.state = {
       boards: [],
-      newTitle: ""
+      newTitle: "",
+      open: false
     };
   }
 
@@ -46,27 +49,42 @@ class Boards extends Component {
           <div className="columns" style={{ textAlign: "center" }}>
             <div className="column is-one-quarter">
               <NavLink to="/app">
-                <div className="box" id="board_card">
+                <div className="box" id="board_card" style={{ height: "100%" }}>
                   Welcome Board
                 </div>
               </NavLink>
             </div>
             {this.state.boards.map((board, i) => (
-              <div className="column is-one-quarter" key={i}>
-                <div className="box" id="board_card">
-                  {board.title}
+              <Grow in timeout={{ enter: 3000 }} key={i}>
+                <div className="column is-one-quarter">
+                  <div
+                    className="box"
+                    id="board_card"
+                    style={{ height: "100%" }}
+                  >
+                    {board.title}
+                  </div>
                 </div>
-              </div>
+              </Grow>
             ))}
             <div className="column is-one-quarter">
-              <form onSubmit={this.handleSubmit.bind(this)}>
-                <input
-                  type="text"
-                  placeholder="Create new board"
-                  onChange={this.handleChange.bind(this)}
-                  value={this.state.newTitle}
-                />
-              </form>
+              <div
+                className="box"
+                onClick={() => this.setState({ open: true })}
+              >
+                {/* Create a new board */}
+                <form onSubmit={this.handleSubmit.bind(this)}>
+                  <TextField
+                    id="with-placeholder"
+                    required
+                    label="Create new board"
+                    placeholder="Title"
+                    margin="none"
+                    onChange={this.handleChange.bind(this)}
+                    value={this.state.newTitle}
+                  />
+                </form>
+              </div>
             </div>
           </div>
         </div>
