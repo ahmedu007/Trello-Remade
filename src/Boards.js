@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import shortid from "shortid";
 import { NavLink } from "react-router-dom";
+import "./Board.css";
 
 class Boards extends Component {
   constructor(props) {
@@ -45,12 +46,16 @@ class Boards extends Component {
           <div className="columns" style={{ textAlign: "center" }}>
             <div className="column is-one-quarter">
               <NavLink to="/app">
-                <div className="box">Welcome Board</div>
+                <div className="box" id="board_card">
+                  Welcome Board
+                </div>
               </NavLink>
             </div>
             {this.state.boards.map((board, i) => (
               <div className="column is-one-quarter" key={i}>
-                <div className="box">{board.title}</div>
+                <div className="box" id="board_card">
+                  {board.title}
+                </div>
               </div>
             ))}
             <div className="column is-one-quarter">
